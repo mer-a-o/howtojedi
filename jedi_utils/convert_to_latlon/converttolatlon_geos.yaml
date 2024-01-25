@@ -1,19 +1,19 @@
 states to latlon:
 - state geometry:
     fms initialization:
-      namelist filename: /discover/nobackup/mabdiosk/garage/convert_latlon/fmsmpp.nml
-      field table filename: /discover/nobackup/mabdiosk/garage/convert_latlon/field_table_gmao
-    akbk: /discover/nobackup/mabdiosk/garage/convert_latlon/akbk72.nc4
+      namelist filename: ./fmsmpp.nml
+      field table filename: ./field_table_gmao
+    akbk: ./akbk72.nc4
     npx: 13
     npy: 13
     npz: 72
-    field metadata override: /discover/nobackup/mabdiosk/garage/convert_latlon/geos_cf.yaml
+    field metadata override: ./geos_cf.yaml
 
   state:
     datetime: 2020-09-03T15:00:00Z
     filetype: cube sphere history
     state variables: [DELP,NO2,NO,O3,PS,SPHU]
-    datapath: /discover/nobackup/mabdiosk/garage/convert_latlon/
+    datapath: ./
     filename: geos_cf.bkg.20200903_150000z.nc4
 
   latlon interpolation:
@@ -24,5 +24,5 @@ states to latlon:
     pressure levels in hPa: [925, 850, 700, 500, 250]
     model levels: [71, 10]
     bottom model level: true
-    datapath: /discover/nobackup/mabdiosk/garage/convert_latlon/
-    filename prefix: latlon.geos
+    datapath: ./
+    prefix: latlon.geos
