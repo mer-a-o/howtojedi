@@ -1,0 +1,16 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: README
+
+parts:
+- caption: How to use JEDI unitilities
+  chapters:
+    - file: jedi_utils/convert_to_latlon/convert_to_latlon.ipynb
+#    - file: jedi_utils/change_resolution/change_resolution.ipynb
+
+- caption: How to run JEDI applications
+  chapters:
+    - file: jedi_applications/run_hofx/run_hofx.ipynb
+#    - file: jedi_applications/run_3dvar/run_3dvar.ipynb
