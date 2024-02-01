@@ -1,0 +1,73 @@
+time window:
+  begin: 2021-08-04T21:00:00Z
+  length: PT6H
+forecast length: PT6H
+geometry:
+  fms initialization:
+    namelist filename: geometry_input/fmsmpp.nml
+  akbk: geometry_input/akbk72.nc4
+  npx: 13
+  npy: 13
+  npz: 72
+  field metadata override: geometry_input/geos.yaml
+
+#model:
+#  name: PSEUDO
+#  filetype: cube sphere history
+#  datapath: geos_c12
+#  filenames: [aero_x48rt.abkg.eta.%yyyy%mm%dd_%hh%MMz.nc4, met_x48rt.bkg_clcv.%yyyy%mm%dd_%hh%MMz.nc4]
+#  tstep: PT3H
+
+
+model:
+  name: FV3LM
+  namelist filename: geometry_input/input_geos_c12.nml
+  tstep: PT15M
+  #tstep: PT6H # changing this impacts the result, does this tells us what the subwindows are?
+  lm_do_dyn: 1
+  lm_do_trb: 0
+  lm_do_mst: 0
+  model variables: [ua,va,t,delp,sphum,qi,ql,phis,SO4,
+                    BCPHOBIC,BCPHILIC,BRPHOBIC,BRPHILIC,
+                    DU,DU002,DU003,DU004,DU005,
+                    SS,SS002,SS003,SS004]
+
+
+initial condition:
+  datetime: 2021-08-04T21:00:00Z
+  filetype: cube sphere history
+  #datapath: geos_c12
+  datapath: test
+  filenames: [aero_x48rt.abkg.eta.%yyyy%mm%dd_%hh%MMz.nc4, met_x48rt.bkg_clcv.%yyyy%mm%dd_%hh%MMz.nc4]
+  state variables: [ud,vd,ua,va,t,delp,q,qi,ql,phis,SO4,
+                    BCPHOBIC,BCPHILIC,BRPHOBIC,BRPHILIC,
+                    DU,DU002,DU003,DU004,DU005,
+                    SS,SS002,SS003,SS004]
+
+observations:
+  observers:
+  - obs space:
+      name: Aod
+      obsdatain:
+        engine:
+          type: H5File
+          obsfile: obs/aod_viirs_obs_202108042100.nc4
+      obsdataout:
+        engine:
+          type: H5File
+          obsfile: output/fb.4d.fv3lm.aod_viirs_obs_202108042100.nc4
+      simulated variables: [aerosolOpticalDepth]
+      channels: 4
+    obs operator:
+      name: AodCRTM
+      Absorbers: [H2O,O3]
+      obs options:
+        Sensor_ID: v.viirs-m_j1
+        EndianType: little_endian
+        CoefficientPath: crtm/
+        AerosolOption: aerosols_gocart_default
+        model units coeff: 1.0e9
+    obs error:
+      covariance model: diagonal
+    get values:
+      time interpolation: linear

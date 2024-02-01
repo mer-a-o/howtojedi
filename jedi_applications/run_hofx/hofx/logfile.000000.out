@@ -1,0 +1,595 @@
+========================================================================
+READ_ASCII_FILE: unknown
+READ_ASCII_FILE: File: geometry_input/fmsmpp.nml
+========================================================================
+READ_INPUT_NML: unknown
+READ_INPUT_NML: geometry_input/fmsmpp.nml 
+ &fms_io_nml
+        checksum_required       = F
+ /
+ 
+ &fms_nml
+        print_memory_usage=.false.
+        domains_stack_size = 24000000
+ /
+ 
+ &mpp_io_nml
+        header_buffer_val       = 16384
+        global_field_on_root_pe = T
+        io_clocks_on            = F
+        shuffle                 = 0
+        deflate_level           = -1
+        cf_compliance           = F
+ /
+ 
+
+MPP module unknown
+MPP started with NPES=     6
+Using MPI library for message passing...
+Realtime clock resolution=  1.0000E-06 sec (   1000000 ticks/sec)
+Clock rolls over after   9.2234E+12 sec ( 9223372036854775806 ticks)
+
+MPP Parameter module unknown
+
+MPP Data module unknown
+
+MPP_DOMAINS module unknown
+&MPP_IO_NML
+ HEADER_BUFFER_VAL=16384      ,
+ GLOBAL_FIELD_ON_ROOT_PE=T,
+ IO_CLOCKS_ON=F,
+ SHUFFLE=0          ,
+ DEFLATE_LEVEL=-1         ,
+ CF_COMPLIANCE=F,
+ /
+
+MPP_IO module unknown
+
+Using netCDF library version 4.9.2 of Jan  4 2024 13:36:15 $
+
+================================================================================
+FMS_IO_MOD
+unknown
+
+================================================================================
+FMS_MOD
+unknown
+&FMS_NML
+ READ_ALL_PE=T,
+ CLOCK_GRAIN="NONE            ",
+ CLOCK_FLAGS="NONE            ",
+ WARNING_LEVEL="warning ",
+ STACK_SIZE=0          ,
+ DOMAINS_STACK_SIZE=24000000   ,
+ PRINT_MEMORY_USAGE=F,
+ /
+ nml_error_codes=
+
+================================================================================
+CONSTANTS_MOD
+unknown
+
+================================================================================
+FV_CONTROL_MOD
+unknown
+&FV_GRID_NML
+ GRID_NAME="                                                                                ",
+ GRID_FILE="                                                                                                                        ",
+ MOSAIC_PATH="                                                                                                                        ",
+ /
+
+================================================================================
+FV_CONTROL_MOD
+unknown
+&FV_CORE_NML
+ NPX=13         ,
+ NPY=13         ,
+ NTILES=6          ,
+ NPZ=72         ,
+ NPZ_TYPE="                        ",
+ NPZ_RST=0          ,
+ LAYOUT= 2*1          ,
+ IO_LAYOUT= 2*1          ,
+ NCNST=0          ,
+ NWAT=1          ,
+ USE_LOGP=F,
+ P_FAC=  5.0000000000000003E-002,
+ A_IMP= 0.75000000000000000     ,
+ K_SPLIT=1          ,
+ N_SPLIT=0          ,
+ M_SPLIT=0          ,
+ Q_SPLIT=0          ,
+ PRINT_FREQ=0          ,
+ WRITE_3D_DIAGS=T,
+ DO_SCHMIDT=F,
+ DO_CUBE_TRANSFORM=F,
+ HORD_MT=9          ,
+ HORD_VT=9          ,
+ HORD_TM=9          ,
+ HORD_DP=9          ,
+ HORD_TR=12         ,
+ SHIFT_FAC=  18.000000000000000     ,
+ STRETCH_FAC=  0.0000000000000000     ,
+ TARGET_LAT=  0.0000000000000000     ,
+ TARGET_LON=  0.0000000000000000     ,
+ KORD_MT=8          ,
+ KORD_WZ=8          ,
+ KORD_TM=-8         ,
+ KORD_TR=8          ,
+ FV_DEBUG=F,
+ FV_LAND=F,
+ NUDGE=F,
+ DO_SAT_ADJ=F,
+ DO_F3D=F,
+ EXTERNAL_IC=F,
+ READ_INCREMENT=F,
+ NCEP_IC=F,
+ NGGPS_IC=F,
+ ECMWF_IC=F,
+ USE_NEW_NCEP=F,
+ USE_NCEP_PHY=F,
+ FV_DIAG_IC=F,
+ EXTERNAL_ETA=F,
+ RES_LATLON_DYNAMICS="                                                                                                                                ",
+ RES_LATLON_TRACERS="                                                                                                                                ",
+ SCALE_Z=  0.0000000000000000     ,
+ W_MAX=  75.000000000000000     ,
+ Z_MIN=  5.0000000000000003E-002,
+ LIM_FAC=  1.0000000000000000     ,
+ DDDMP=  0.0000000000000000     ,
+ D2_BG=  0.0000000000000000     ,
+ D4_BG= 0.16000000000000000     ,
+ VTDM4=  0.0000000000000000     ,
+ TRDM2=  0.0000000000000000     ,
+ D_EXT=  2.0000000000000000E-002,
+ DELT_MAX=  1.0000000000000000     ,
+ BETA=  0.0000000000000000     ,
+ NON_ORTHO=T,
+ N_SPONGE=1          ,
+ WARM_START=T,
+ ADJUST_DRY_MASS=F,
+ MOUNTAIN=T,
+ D_CON=  0.0000000000000000     ,
+ KE_BG=  0.0000000000000000     ,
+ NORD=1          ,
+ NORD_TR=0          ,
+ CONVERT_KE=F,
+ USE_OLD_OMEGA=T,
+ DRY_MASS=  98290.000000000000     ,
+ GRID_TYPE=0          ,
+ DO_HELD_SUAREZ=F,
+ DO_REED_PHYSICS=F,
+ REED_COND_ONLY=F,
+ CONSV_TE=  0.0000000000000000     ,
+ FILL=F,
+ FILTER_PHYS=F,
+ FILL_DP=F,
+ FILL_WZ=F,
+ FILL_GFS=T,
+ CONSV_AM=F,
+ RF_FAST=F,
+ RANGE_WARN=F,
+ DWIND_2D=F,
+ INLINE_Q=F,
+ Z_TRACER=F,
+ REPRODUCE_SUM=T,
+ ADIABATIC=F,
+ DO_VORT_DAMP=F,
+ NO_DYCORE=F,
+ TAU=  0.0000000000000000     ,
+ TAU_H2O=  0.0000000000000000     ,
+ RF_CUTOFF=  3000.0000000000000     ,
+ NF_OMEGA=1          ,
+ HYDROSTATIC=T,
+ FV_SG_ADJ=-1         ,
+ SG_CUTOFF= -1.0000000000000000     ,
+ BREED_VORTEX_INLINE=F,
+ NA_INIT=0          ,
+ NUDGE_DZ=F,
+ HYBRID_Z=F,
+ MAKE_NH=F,
+ N_ZS_FILTER=0          ,
+ NORD_ZS_FILTER=4          ,
+ FULL_ZS_FILTER=F,
+ RESET_ETA=F,
+ PNATS=0          ,
+ DNATS=0          ,
+ DNRTS=-1         ,
+ A2B_ORD=4          ,
+ REMAP_T=T,
+ P_REF=  100000.00000000000     ,
+ D2_BG_K1=  4.0000000000000000     ,
+ D2_BG_K2=  2.0000000000000000     ,
+ C2L_ORD=4          ,
+ DX_CONST=  1000.0000000000000     ,
+ DY_CONST=  1000.0000000000000     ,
+ UMAX=  350.00000000000000     ,
+ DEGLAT=  15.000000000000000     ,
+ DEGLON_START= -30.000000000000000     ,
+ DEGLON_STOP=  30.000000000000000     ,
+ DEGLAT_START= -30.000000000000000     ,
+ DEGLAT_STOP=  30.000000000000000     ,
+ PHYS_HYDROSTATIC=T,
+ USE_HYDRO_PRESSURE=F,
+ MAKE_HYBRID_Z=F,
+ OLD_DIVG_DAMP=F,
+ ADD_NOISE= -1.0000000000000000     ,
+ BUTTERFLY_EFFECT=F,
+ NESTED=F,
+ TWOWAYNEST=F,
+ NUDGE_QV=F,
+ NESTBCTYPE=1          ,
+ NESTUPDATE=7          ,
+ NSPONGE=0          ,
+ S_WEIGHT=  9.9999999999999995E-007,
+ CHECK_NEGATIVE=F,
+ NUDGE_IC=F,
+ HALO_UPDATE_TYPE=1          ,
+ GFS_PHIL=F,
+ AGRID_VEL_RST=F,
+ DO_UNI_ZFULL=F,
+ ADJ_MASS_VMR=F,
+ FAC_N_SPL=  1.0000000000000000     ,
+ FHOURI=  0.0000000000000000     ,
+ UPDATE_BLEND=  1.0000000000000000     ,
+ REGIONAL=F,
+ BC_UPDATE_INTERVAL=3          ,
+ REGIONAL_BCS_FROM_GSI=F,
+ WRITE_RESTART_WITH_BCS=F,
+ NROWS_BLEND=0          ,
+ /
+&TEST_CASE_NML
+ TEST_CASE=11         ,
+ BUBBLE_DO=F,
+ ALPHA=  0.0000000000000000     ,
+ NSOLITONS=1          ,
+ SOLITON_UMAX=  50.000000000000000     ,
+ SOLITON_SIZE=  750000.00000000000     ,
+ /
+
+Cubic: cubed-sphere domain decomposition:     1 X    1
+   pe,   is,  ie,  js,  je,    isd, ied, jsd, jed
+
+Cubic: cubed-sphere domain decomposition:     1 X    1
+   pe,   is,  ie,  js,  je,    isd, ied, jsd, jed
+
+================================================================================
+TRACER_MANAGER_MOD
+unknown
+
+cubic_grid domain decomposition:     1 X    1
+   pe,   is,  ie,  js,  je,    isd, ied, jsd, jed
+========================================================================
+READ_ASCII_FILE: unknown
+READ_ASCII_FILE: File: geometry_input/input_geos_c12.nml
+&FV_GRID_NML
+ GRID_NAME="                                                                                ",
+ GRID_FILE="                                                                                                                        ",
+ /
+&FV_CORE_NML
+ NPX=13         ,
+ NPY=13         ,
+ NTILES=6          ,
+ NPZ=72         ,
+ NPZ_RST=0          ,
+ LAYOUT= 2*1          ,
+ IO_LAYOUT= 2*1          ,
+ NCNST=0          ,
+ NWAT=0          ,
+ USE_LOGP=F,
+ P_FAC= 0.10000000000000001     ,
+ A_IMP=  1.0000000000000000     ,
+ K_SPLIT=2          ,
+ N_SPLIT=0          ,
+ M_SPLIT=0          ,
+ Q_SPLIT=0          ,
+ PRINT_FREQ=0          ,
+ DO_SCHMIDT=F,
+ HORD_MT=5          ,
+ HORD_VT=6          ,
+ HORD_TM=6          ,
+ HORD_DP=-6         ,
+ HORD_TR=8          ,
+ SHIFT_FAC=  18.000000000000000     ,
+ STRETCH_FAC=  1.0000000000000000     ,
+ TARGET_LAT= -90.000000000000000     ,
+ TARGET_LON=  0.0000000000000000     ,
+ KORD_MT=9          ,
+ KORD_WZ=9          ,
+ KORD_TM=9          ,
+ KORD_TR=9          ,
+ FV_DEBUG=F,
+ FV_LAND=F,
+ NUDGE=F,
+ DO_SAT_ADJ=F,
+ DO_F3D=F,
+ EXTERNAL_IC=F,
+ NCEP_IC=F,
+ NGGPS_IC=F,
+ ECMWF_IC=F,
+ USE_NEW_NCEP=F,
+ USE_NCEP_PHY=F,
+ FV_DIAG_IC=F,
+ RES_LATLON_DYNAMICS="                                                                                                                                ",
+ RES_LATLON_TRACERS="                                                                                                                                ",
+ SCALE_Z=  0.0000000000000000     ,
+ W_MAX=  75.000000000000000     ,
+ Z_MIN=  5.0000000000000003E-002,
+ DDDMP= 0.10000000000000001     ,
+ D2_BG=  0.0000000000000000     ,
+ D4_BG= 0.12000000000000000     ,
+ VTDM4=  5.9999999999999998E-002,
+ TRDM2=  0.0000000000000000     ,
+ D_EXT=  0.0000000000000000     ,
+ DELT_MAX=  2.0000000000000000E-003,
+ BETA=  0.0000000000000000     ,
+ NON_ORTHO=T,
+ N_SPONGE=9          ,
+ N_ZFILTER=25         ,
+ WARM_START=T,
+ ADJUST_DRY_MASS=F,
+ MOUNTAIN=T,
+ D_CON=  1.0000000000000000     ,
+ KE_BG=  0.0000000000000000     ,
+ NORD=2          ,
+ NORD_TR=0          ,
+ CONVERT_KE=F,
+ USE_OLD_OMEGA=T,
+ DRY_MASS=  98290.000000000000     ,
+ GRID_TYPE=0          ,
+ DO_HELD_SUAREZ=F,
+ DO_REED_PHYSICS=F,
+ REED_COND_ONLY=F,
+ CONSV_TE=  1.0000000000000000     ,
+ FILL=T,
+ FILTER_PHYS=F,
+ FILL_DP=F,
+ FILL_WZ=F,
+ CONSV_AM=F,
+ RANGE_WARN=F,
+ DWIND_2D=F,
+ INLINE_Q=F,
+ Z_TRACER=T,
+ REPRODUCE_SUM=T,
+ ADIABATIC=F,
+ DO_VORT_DAMP=T,
+ NO_DYCORE=F,
+ TAU=  0.0000000000000000     ,
+ TAU_H2O=  0.0000000000000000     ,
+ RF_CUTOFF=  750.00000000000000     ,
+ NF_OMEGA=1          ,
+ HYDROSTATIC=T,
+ FV_SG_ADJ=-1         ,
+ BREED_VORTEX_INLINE=F,
+ NA_INIT=0          ,
+ HYBRID_Z=F,
+ MAKE_NH=T,
+ N_ZS_FILTER=0          ,
+ NORD_ZS_FILTER=4          ,
+ FULL_ZS_FILTER=F,
+ RESET_ETA=F,
+ PNATS=0          ,
+ DNATS=0          ,
+ A2B_ORD=4          ,
+ REMAP_OPTION=2          ,
+ P_REF=  100000.00000000000     ,
+ D2_BG_K1= 0.20000000000000001     ,
+ D2_BG_K2=  5.9999999999999998E-002,
+ C2L_ORD=4          ,
+ DX_CONST=  1000.0000000000000     ,
+ DY_CONST=  1000.0000000000000     ,
+ UMAX=  350.00000000000000     ,
+ DEGLAT=  15.000000000000000     ,
+ DEGLON_START= -30.000000000000000     ,
+ DEGLON_STOP=  30.000000000000000     ,
+ DEGLAT_START= -30.000000000000000     ,
+ DEGLAT_STOP=  30.000000000000000     ,
+ PHYS_HYDROSTATIC=T,
+ USE_HYDRO_PRESSURE=F,
+ MAKE_HYBRID_Z=F,
+ OLD_DIVG_DAMP=F,
+ ADD_NOISE= -1.0000000000000000     ,
+ NESTED=F,
+ TWOWAYNEST=F,
+ PARENT_GRID_NUM=-1         ,
+ PARENT_TILE=1          ,
+ NUDGE_QV=F,
+ REFINEMENT=3          ,
+ NESTBCTYPE=1          ,
+ NESTUPDATE=0          ,
+ NSPONGE=0          ,
+ S_WEIGHT=  9.9999999999999995E-007,
+ IOFFSET=0          ,
+ JOFFSET=0          ,
+ CHECK_NEGATIVE=F,
+ NUDGE_IC=F,
+ HALO_UPDATE_TYPE=1          ,
+ GFS_PHIL=F,
+ AGRID_VEL_RST=F,
+ DO_UNI_ZFULL=F,
+ ADJ_MASS_VMR=F,
+ /
+&TEST_CASE_NML
+ TEST_CASE=13         ,
+ BUBBLE_DO=F,
+ ALPHA=  0.0000000000000000     ,
+ NSOLITONS=0          ,
+ SOLITON_UMAX=  50.000000000000000     ,
+ SOLITON_SIZE=  750000.00000000000     ,
+ /
+&NGGPS_DIAG_NML
+ FDIAG= 2048*0.0000000000000000       ,
+ /
+
+Cubic: cubed-sphere domain decomposition:     1 X    1
+   pe,   is,  ie,  js,  je,    isd, ied, jsd, jed
+
+Cubic: cubed-sphere domain decomposition:     1 X    1
+   pe,   is,  ie,  js,  je,    isd, ied, jsd, jed
+========================================================================
+READ_ASCII_FILE: unknown
+READ_ASCII_FILE: File: geometry_input/input_geos_c12.nml
+&FV_GRID_NML
+ GRID_NAME="                                                                                ",
+ GRID_FILE="                                                                                                                        ",
+ /
+&FV_CORE_NML
+ NPX=13         ,
+ NPY=13         ,
+ NTILES=6          ,
+ NPZ=72         ,
+ NPZ_RST=0          ,
+ LAYOUT= 2*1          ,
+ IO_LAYOUT= 2*1          ,
+ NCNST=0          ,
+ NWAT=0          ,
+ USE_LOGP=F,
+ P_FAC= 0.10000000000000001     ,
+ A_IMP=  1.0000000000000000     ,
+ K_SPLIT=2          ,
+ N_SPLIT=0          ,
+ M_SPLIT=0          ,
+ Q_SPLIT=0          ,
+ PRINT_FREQ=0          ,
+ DO_SCHMIDT=F,
+ HORD_MT=5          ,
+ HORD_VT=6          ,
+ HORD_TM=6          ,
+ HORD_DP=-6         ,
+ HORD_TR=8          ,
+ SHIFT_FAC=  18.000000000000000     ,
+ STRETCH_FAC=  1.0000000000000000     ,
+ TARGET_LAT= -90.000000000000000     ,
+ TARGET_LON=  0.0000000000000000     ,
+ KORD_MT=9          ,
+ KORD_WZ=9          ,
+ KORD_TM=9          ,
+ KORD_TR=9          ,
+ FV_DEBUG=F,
+ FV_LAND=F,
+ NUDGE=F,
+ DO_SAT_ADJ=F,
+ DO_F3D=F,
+ EXTERNAL_IC=F,
+ NCEP_IC=F,
+ NGGPS_IC=F,
+ ECMWF_IC=F,
+ USE_NEW_NCEP=F,
+ USE_NCEP_PHY=F,
+ FV_DIAG_IC=F,
+ RES_LATLON_DYNAMICS="                                                                                                                                ",
+ RES_LATLON_TRACERS="                                                                                                                                ",
+ SCALE_Z=  0.0000000000000000     ,
+ W_MAX=  75.000000000000000     ,
+ Z_MIN=  5.0000000000000003E-002,
+ DDDMP= 0.10000000000000001     ,
+ D2_BG=  0.0000000000000000     ,
+ D4_BG= 0.12000000000000000     ,
+ VTDM4=  5.9999999999999998E-002,
+ TRDM2=  0.0000000000000000     ,
+ D_EXT=  0.0000000000000000     ,
+ DELT_MAX=  2.0000000000000000E-003,
+ BETA=  0.0000000000000000     ,
+ NON_ORTHO=T,
+ N_SPONGE=9          ,
+ N_ZFILTER=25         ,
+ WARM_START=T,
+ ADJUST_DRY_MASS=F,
+ MOUNTAIN=T,
+ D_CON=  1.0000000000000000     ,
+ KE_BG=  0.0000000000000000     ,
+ NORD=2          ,
+ NORD_TR=0          ,
+ CONVERT_KE=F,
+ USE_OLD_OMEGA=T,
+ DRY_MASS=  98290.000000000000     ,
+ GRID_TYPE=0          ,
+ DO_HELD_SUAREZ=F,
+ DO_REED_PHYSICS=F,
+ REED_COND_ONLY=F,
+ CONSV_TE=  1.0000000000000000     ,
+ FILL=T,
+ FILTER_PHYS=F,
+ FILL_DP=F,
+ FILL_WZ=F,
+ CONSV_AM=F,
+ RANGE_WARN=F,
+ DWIND_2D=F,
+ INLINE_Q=F,
+ Z_TRACER=T,
+ REPRODUCE_SUM=T,
+ ADIABATIC=F,
+ DO_VORT_DAMP=T,
+ NO_DYCORE=F,
+ TAU=  0.0000000000000000     ,
+ TAU_H2O=  0.0000000000000000     ,
+ RF_CUTOFF=  750.00000000000000     ,
+ NF_OMEGA=1          ,
+ HYDROSTATIC=T,
+ FV_SG_ADJ=-1         ,
+ BREED_VORTEX_INLINE=F,
+ NA_INIT=0          ,
+ HYBRID_Z=F,
+ MAKE_NH=T,
+ N_ZS_FILTER=0          ,
+ NORD_ZS_FILTER=4          ,
+ FULL_ZS_FILTER=F,
+ RESET_ETA=F,
+ PNATS=0          ,
+ DNATS=0          ,
+ A2B_ORD=4          ,
+ REMAP_OPTION=2          ,
+ P_REF=  100000.00000000000     ,
+ D2_BG_K1= 0.20000000000000001     ,
+ D2_BG_K2=  5.9999999999999998E-002,
+ C2L_ORD=4          ,
+ DX_CONST=  1000.0000000000000     ,
+ DY_CONST=  1000.0000000000000     ,
+ UMAX=  350.00000000000000     ,
+ DEGLAT=  15.000000000000000     ,
+ DEGLON_START= -30.000000000000000     ,
+ DEGLON_STOP=  30.000000000000000     ,
+ DEGLAT_START= -30.000000000000000     ,
+ DEGLAT_STOP=  30.000000000000000     ,
+ PHYS_HYDROSTATIC=T,
+ USE_HYDRO_PRESSURE=F,
+ MAKE_HYBRID_Z=F,
+ OLD_DIVG_DAMP=F,
+ ADD_NOISE= -1.0000000000000000     ,
+ NESTED=F,
+ TWOWAYNEST=F,
+ PARENT_GRID_NUM=-1         ,
+ PARENT_TILE=1          ,
+ NUDGE_QV=F,
+ REFINEMENT=3          ,
+ NESTBCTYPE=1          ,
+ NESTUPDATE=0          ,
+ NSPONGE=0          ,
+ S_WEIGHT=  9.9999999999999995E-007,
+ IOFFSET=0          ,
+ JOFFSET=0          ,
+ CHECK_NEGATIVE=F,
+ NUDGE_IC=F,
+ HALO_UPDATE_TYPE=1          ,
+ GFS_PHIL=F,
+ AGRID_VEL_RST=F,
+ DO_UNI_ZFULL=F,
+ ADJ_MASS_VMR=F,
+ /
+&TEST_CASE_NML
+ TEST_CASE=13         ,
+ BUBBLE_DO=F,
+ ALPHA=  0.0000000000000000     ,
+ NSOLITONS=0          ,
+ SOLITON_UMAX=  50.000000000000000     ,
+ SOLITON_SIZE=  750000.00000000000     ,
+ /
+&NGGPS_DIAG_NML
+ FDIAG= 2048*0.0000000000000000       ,
+ /
+
+Cubic: cubed-sphere domain decomposition:     1 X    1
+   pe,   is,  ie,  js,  je,    isd, ied, jsd, jed
+
+Cubic: cubed-sphere domain decomposition:     1 X    1
+   pe,   is,  ie,  js,  je,    isd, ied, jsd, jed
