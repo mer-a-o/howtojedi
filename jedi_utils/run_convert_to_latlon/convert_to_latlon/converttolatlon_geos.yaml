@@ -1,19 +1,19 @@
 states to latlon:
 - state geometry:
     fms initialization:
-      namelist filename: ./fmsmpp.nml
-      field table filename: ./field_table_gmao
-    akbk: ./akbk72.nc4
+      namelist filename: geometry_input/fmsmpp.nml
+      field table filename: geometry_input/field_table_gmao
+    akbk: geometry_input/akbk72.nc4
     npx: 13
     npy: 13
     npz: 72
-    field metadata override: ./geos_cf.yaml
+    field metadata override: geometry_input/geos_cf.yaml
 
   state:
     datetime: 2020-09-03T15:00:00Z
     filetype: cube sphere history
     state variables: [DELP,NO2,NO,O3,PS,SPHU]
-    datapath: ./
+    datapath: geos_c12/
     filename: geos_cf.bkg.20200903_150000z.nc4
 
   latlon interpolation:
@@ -24,5 +24,5 @@ states to latlon:
     pressure levels in hPa: [925, 850, 700, 500, 250]
     model levels: [71, 10]
     bottom model level: true
-    datapath: ./
+    datapath: output
     prefix: latlon.geos
