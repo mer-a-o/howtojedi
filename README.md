@@ -11,7 +11,7 @@
    1. [Running HofX application with JEDI](https://mer-a-o.github.io/howtojedi/jedi_applications/run_hofx/run_hofx.html)
    2. Running 3DVar and 3DFGAT application with JEDI
    3. Training B matrix with JEDI/SABER
-   4. [Running 4DVar application on Discover](https://github.com/mer-a-o/howtojedi/blob/main/jedi_applications/run_var/4dvar/run_4dvar_discover.html)
+   4. [Running 4DVar application on Discover](https://mer-a-o.github.io/howtojedi/jedi_applications/run_var/4dvar/run_4dvar_discover.html)
 
 ## Requirements:
 This tutorial assumes that you have set up your work environment (which can be done by loading [Spack-Stack modules](https://spack-stack.readthedocs.io/en/1.5.1/PreConfiguredSites.html) or using JCSDA [containers](https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/using/jedi_environment/containers/container_overview.html)) and that you have built [jedi-bundle](https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/using/building_and_running/building_jedi.html)
