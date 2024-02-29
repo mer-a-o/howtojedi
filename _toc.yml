@@ -13,4 +13,5 @@ parts:
 - caption: How to run JEDI applications
   chapters:
     - file: jedi_applications/run_hofx/run_hofx.ipynb
+    - file: jedi_applications/run_var/4dvar/run_4dvar_discover.ipynb
 #    - file: jedi_applications/run_3dvar/run_3dvar.ipynb
