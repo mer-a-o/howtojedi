@@ -5,7 +5,7 @@ format: jb-book
 root: README
 
 parts:
-- caption: How to use JEDI unitilities
+- caption: How to use JEDI utilities
   chapters:
     - file: jedi_utils/run_convert_to_latlon/convert_to_latlon.ipynb
 #    - file: jedi_utils/change_resolution/change_resolution.ipynb

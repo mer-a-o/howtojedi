@@ -2,8 +2,8 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: How to JEDI
-author: Maryam Abdi-Oskouei (JCSDA) 
-copyright: "2024"  # Copyright year to be placed in the footer
+author: Maryam Abdi-Oskouei (GMAO) 
+copyright: "2025"  # Copyright year to be placed in the footer
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
