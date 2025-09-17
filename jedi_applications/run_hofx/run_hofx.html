@@ -1,0 +1,998 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Running hofx application in JEDI &#8212; How to JEDI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'jedi_applications/run_hofx/run_hofx';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Running hofx application in JEDI and saving GeoVaLs" href="run_hofx_save_geovals.html" />
+    <link rel="prev" title="Converting cubed sphere to lat/lon grid using JEDI" href="../../jedi_utils/run_convert_to_latlon/convert_to_latlon.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">How to JEDI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    How to use JEDI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">How to use JEDI utilities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../jedi_utils/run_convert_to_latlon/convert_to_latlon.html">Converting cubed sphere to lat/lon grid using JEDI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">How to run JEDI applications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Running hofx application in JEDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_hofx_save_geovals.html">Running hofx application in JEDI and saving GeoVaLs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../run_var/4dvar/run_4dvar_discover.html">Running 4DVar application in JEDI (on Discover)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mer-a-o/howtojedi" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mer-a-o/howtojedi/edit/main/jedi_applications/run_hofx/run_hofx.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mer-a-o/howtojedi/issues/new?title=Issue%20on%20page%20%2Fjedi_applications/run_hofx/run_hofx.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/jedi_applications/run_hofx/run_hofx.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Running hofx application in JEDI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">prerequisite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducton">Introducton:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hofx3d">HofX3D</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml-structure-hofx3d">YAML structure (HofX3D):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-hofx3d">Running HofX3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-the-output-of-hofx3d-run">examining the output of HofX3D run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hofx4d">HofX4D</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml-structure-hofx4d">YAML structure (HofX4D):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-hofx4d">Running HofX4D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-the-output-of-hofx4d-run">examining the output of HofX4D run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-the-two-experiments">Comparing the two experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading-and-ctest-examples">Further reading and ctest examples</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="running-hofx-application-in-jedi">
+<h1>Running hofx application in JEDI<a class="headerlink" href="#running-hofx-application-in-jedi" title="Link to this heading">#</a></h1>
+<p>This tutorial assumes that you have set up your work environment (which can be done by loading <a class="reference external" href="https://spack-stack.readthedocs.io/en/latest/PreConfiguredSites.html">Spack-Stack modules</a> and that you have built <a class="reference external" href="https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/using/building_and_running/building_jedi.html">jedi-bundle</a></p>
+<section id="prerequisite">
+<h2>prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">jedi-bundle</span></code> is already built in your <code class="docutils literal notranslate"><span class="pre">JEDI_BUILD</span></code>.</p></li>
+<li><p>Background files</p></li>
+<li><p>observation files</p></li>
+<li><p>Input geometry files</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="introducton">
+<h2>Introducton:<a class="headerlink" href="#introducton" title="Link to this heading">#</a></h2>
+<p>An H(x) (hofx) application computes model equivalent values at the locations and times of observations using observation operators. Depending on the observation type, observation operator can either do a simple interpolation of model output to the observation location or a more complicated operation when the observation values are not avaiable in the model outptus. For example, Aerosol Optical Depth (AOD) is a prognostic quantity that is not typically stored in model outputs. To the hofx values, the AOD observation operator calculates AOD from the model state using the CRTM observation operator. In JEDI, observation operators are located in the <a class="reference external" href="https://github.com/JCSDA/ufo/tree/develop">Unified Forward Operator (UFO) code repository</a>.</p>
+<p>In this section, we introduce two approaches for computing H(x) in JEDI: Hofx3D and Hofx4D. Each approach makes different simplifying assumptions about the observation time to reduce computational cost.</p>
+</section>
+<section id="hofx3d">
+<h2>HofX3D<a class="headerlink" href="#hofx3d" title="Link to this heading">#</a></h2>
+<div style="text-align: center;">
+    <img src="./figures/3DVar.jpg" width="500" height="300">
+</div><p>For the HofX3D approach, we take a model state (background) that is valid at the middle of the assimilation window (blue circle). We also take all the observations measured within the assimilation window (red circles). Next, we must extract the model value at the observation time and location. Since computing the model state at every observation time is costly, we assume that all the observations (within the window) were measured at the same time as our model state, which is in the middle of the window. With this assumption, we only need to find the model value at the observation locations to compute the H(x) values.</p>
+<p>In FV3-JEDI, the executable for this application is <code class="docutils literal notranslate"><span class="pre">fv3jedi_hofx_nomodel.x</span></code></p>
+<section id="yaml-structure-hofx3d">
+<h3>YAML structure (HofX3D):<a class="headerlink" href="#yaml-structure-hofx3d" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Beginning and length of assimilation window</span>
+<span class="nt">time window</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">begin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2021-08-04T21:00:00Z</span>
+<span class="w">  </span><span class="nt">length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT6H</span>
+
+<span class="c1"># Geometry of the model</span>
+<span class="nt">geometry</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">fms initialization</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namelist filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/geometry_input/fmsmpp.nml</span>
+<span class="w">  </span><span class="nt">akbk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/geometry_input/akbk72.nc4</span>
+<span class="w">  </span><span class="nt">npx</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<span class="w">  </span><span class="nt">npy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<span class="w">  </span><span class="nt">npz</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">72</span>
+<span class="w">  </span><span class="nt">field metadata override</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/geometry_input/geos.yaml</span>
+
+<span class="c1"># Model state valid in the middle of the assimilation window</span>
+<span class="nt">state</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">datetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2021-08-05T00:00:00Z</span>
+<span class="w">  </span><span class="nt">filetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cube sphere history</span>
+<span class="w">  </span><span class="nt">datapath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/geos_c12</span>
+<span class="w">  </span><span class="nt">filenames</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">aero_x48rt.abkg.eta.%yyyy%mm%dd_%hh%MMz.nc4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">met_x48rt.bkg_clcv.%yyyy%mm%dd_%hh%MMz.nc4</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">state variables</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ud</span><span class="p p-Indicator">,</span><span class="nv">vd</span><span class="p p-Indicator">,</span><span class="nv">ua</span><span class="p p-Indicator">,</span><span class="nv">va</span><span class="p p-Indicator">,</span><span class="nv">t</span><span class="p p-Indicator">,</span><span class="nv">delp</span><span class="p p-Indicator">,</span><span class="nv">q</span><span class="p p-Indicator">,</span><span class="nv">qi</span><span class="p p-Indicator">,</span><span class="nv">ql</span><span class="p p-Indicator">,</span><span class="nv">phis</span><span class="p p-Indicator">,</span><span class="nv">SO4</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="nv">BCPHOBIC</span><span class="p p-Indicator">,</span><span class="nv">BCPHILIC</span><span class="p p-Indicator">,</span><span class="nv">BRPHOBIC</span><span class="p p-Indicator">,</span><span class="nv">BRPHILIC</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="nv">DU</span><span class="p p-Indicator">,</span><span class="nv">DU002</span><span class="p p-Indicator">,</span><span class="nv">DU003</span><span class="p p-Indicator">,</span><span class="nv">DU004</span><span class="p p-Indicator">,</span><span class="nv">DU005</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="nv">SS</span><span class="p p-Indicator">,</span><span class="nv">SS002</span><span class="p p-Indicator">,</span><span class="nv">SS003</span><span class="p p-Indicator">,</span><span class="nv">SS004</span><span class="p p-Indicator">]</span>
+<span class="w">                    </span>
+<span class="c1"># Observations measured throughout the assimilation window</span>
+<span class="c1"># But are assumed to be valid in the middle of the assimilation window.</span>
+<span class="nt">observations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">observers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">obs space</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aod</span>
+<span class="w">      </span><span class="nt">obsdatain</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">engine</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H5File</span>
+<span class="w">          </span><span class="nt">obsfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/obs/aod_viirs_obs_202108042100.nc4</span>
+<span class="w">      </span><span class="nt">obsdataout</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">engine</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H5File</span>
+<span class="w">          </span><span class="nt">obsfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output/hofx3d.aod_viirs_obs_202108042100.nc4</span>
+<span class="w">      </span><span class="nt">simulated variables</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">aerosolOpticalDepth</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">channels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="nt">obs operator</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AodCRTM</span>
+<span class="w">      </span><span class="nt">Absorbers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">H2O</span><span class="p p-Indicator">,</span><span class="nv">O3</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">obs options</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">Sensor_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v.viirs-m_j1</span>
+<span class="w">        </span><span class="nt">EndianType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">little_endian</span>
+<span class="w">        </span><span class="nt">CoefficientPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">crtm/</span>
+<span class="w">        </span><span class="nt">AerosolOption</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerosols_gocart_default</span>
+<span class="w">        </span><span class="nt">model units coeff</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e9</span>
+<span class="w">    </span><span class="nt">obs error</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">covariance model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">diagonal</span>
+<span class="w">    </span><span class="nt">get values</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">time interpolation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linear</span>
+</pre></div>
+</div>
+<p>A few points about this experiment’s YAML file:</p>
+<ul class="simple">
+<li><p>Note that the assimilation window goes from <code class="docutils literal notranslate"><span class="pre">2021-08-04T21:00:00Z</span></code> to <code class="docutils literal notranslate"><span class="pre">2021-08-05T03:00:00Z</span></code></p></li>
+<li><p>The model state is valid at <code class="docutils literal notranslate"><span class="pre">2021-08-05T00:00:00Z</span></code>, the middle of the window.</p></li>
+<li><p>If you examine the observation file (<code class="docutils literal notranslate"><span class="pre">aod_viirs_obs_202108042100.nc4</span></code>), you can see that it includes measurements from <code class="docutils literal notranslate"><span class="pre">21Z</span></code> to <code class="docutils literal notranslate"><span class="pre">3Z</span></code> throughout the assimilation window.</p></li>
+<li><p>The observation operator is <code class="docutils literal notranslate"><span class="pre">AodCRTM</span></code> which calculates AOD from the model state.</p></li>
+<li><p>The output is saved at <code class="docutils literal notranslate"><span class="pre">output/hofx3d.aod_viirs_obs_202108042100.nc4</span></code>. This file includes various variables including <code class="docutils literal notranslate"><span class="pre">hofx</span></code> and <code class="docutils literal notranslate"><span class="pre">obsValue</span></code>.</p></li>
+</ul>
+</section>
+<section id="running-hofx3d">
+<h3>Running HofX3D<a class="headerlink" href="#running-hofx3d" title="Link to this heading">#</a></h3>
+<p>First, you need to load the modules and set up the environment needed to run JEDI. More details available on <a class="reference external" href="https://spack-stack.readthedocs.io/en/latest/PreConfiguredSites.html">Spack-Stack docs</a> and <a class="reference external" href="https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/using/building_and_running/building_jedi.html">JEDI docs</a></p>
+<p>After loading the modules, set the path to your <code class="docutils literal notranslate"><span class="pre">JEDI_BUILD</span></code> and <code class="docutils literal notranslate"><span class="pre">MPIEXEC</span></code>. Running <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">mpiexec</span></code> will return the path to your <code class="docutils literal notranslate"><span class="pre">mpiexec</span></code>. <code class="docutils literal notranslate"><span class="pre">JEDI_BUILD</span></code> is the path to your JEDI build directory.</p>
+<p>On Discover using Spack Stack GNU 1.9.0:
+You can load Spack Stack 1.9 on Discover by running this script:
+<code class="docutils literal notranslate"><span class="pre">/discover/nobackup/projects/jcsda/s2127/maryamao/jedi-bundle/activateGNU_spack_1.9.0_mil.sh</span></code>
+You can point to a pre-build version of the code here:
+<code class="docutils literal notranslate"><span class="pre">/discover/nobackup/projects/jcsda/s2127/maryamao/jedi-bundle/build-gnu-spack-1.9.0-mil</span></code></p>
+<p>Note that these may become out-dated. The best practice is to follow the instructions on Spack-Stack and JEDI docs and build code yourself.</p>
+<p>Here is an example of setting these two variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">MPIEXEC</span><span class="o">=</span>/discover/swdev/gmao_SIteam/MPI/openmpi/4.1.6-SLES15/gcc-12.3.0/bin/mpiexec
+<span class="nb">export</span><span class="w"> </span><span class="nv">JEDI_BUILD</span><span class="o">=</span>/discover/nobackup/projects/jcsda/s2127/maryamao/jedi-bundle/build-gnu-spack-1.9.0-mil
+</pre></div>
+</div>
+<p>All the files that you need are under <code class="docutils literal notranslate"><span class="pre">hofx</span></code> directory. So <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">hofx</span></code> and then you can run the application with this command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$MPIEXEC</span><span class="w"> </span><span class="s2">&quot;-n&quot;</span><span class="w"> </span><span class="s2">&quot;6&quot;</span><span class="w"> </span><span class="nv">$JEDI_BUILD</span>/bin/fv3jedi_hofx_nomodel.x<span class="w"> </span>hofx_fv3-geos_aero_nomodel.yaml<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>log_hofx3d.txt
+</pre></div>
+</div>
+</section>
+<section id="examining-the-output-of-hofx3d-run">
+<h3>examining the output of HofX3D run<a class="headerlink" href="#examining-the-output-of-hofx3d-run" title="Link to this heading">#</a></h3>
+<p>In the previous section, we saved the output from running <code class="docutils literal notranslate"><span class="pre">fv3jedi_hofx_nomodel.x</span></code> in <code class="docutils literal notranslate"><span class="pre">log_hofx3d.txt</span></code>. The output log includes helpful information, such as timing statistics for all the tasks in the application. Examine the output log and take note of costly tasks.</p>
+<p>The output file name is specified under the <code class="docutils literal notranslate"><span class="pre">obsdataout</span> <span class="pre">-&gt;</span> <span class="pre">obsfile</span></code> section of the YAML file. You can examine this file using nco command <code class="docutils literal notranslate"><span class="pre">ncdump</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncdump</span> <span class="o">-</span><span class="n">h</span> <span class="n">output</span><span class="o">/</span><span class="n">hofx3d</span><span class="o">.</span><span class="n">aod_viirs_obs_202108042100</span><span class="o">.</span><span class="n">nc4</span>
+</pre></div>
+</div>
+<p>The output file is in a nested NetCDF format (IODA format) and includes several groups such as <code class="docutils literal notranslate"><span class="pre">MetaData</span></code>, <code class="docutils literal notranslate"><span class="pre">ObsValue</span></code>, <code class="docutils literal notranslate"><span class="pre">hofx</span></code>, etc.</p>
+<p>The simple script below reads hofx and obs values from this file and creates a scatter plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;./hofx/output/hofx3d.aod_viirs_obs_202108042100.nc4&quot;</span>
+<span class="n">hofx</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;hofx&quot;</span><span class="p">)</span> <span class="c1"># need to specify group name</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;ObsValue&quot;</span><span class="p">)</span> <span class="c1"># need to specify group name</span>
+
+<span class="c1"># plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;aerosolOpticalDepth&#39;</span><span class="p">],</span> <span class="n">hofx</span><span class="p">[</span><span class="s1">&#39;aerosolOpticalDepth&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">5.1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">5.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;AOD Obs&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;AOD H(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;AOD obs vs model -- HofX3D&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/site-packages/xarray/backends/file_manager.py:211,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">211</span>     <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/site-packages/xarray/backends/lru_cache.py:56,</span> in <span class="ni">LRUCache.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/Users/maryamabdi/Work/JEDI/howtojedi/jedi_applications/run_hofx/hofx/output/hofx3d.aod_viirs_obs_202108042100.nc4&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;164ff008-bda8-420b-abf3-abec1e7fc933&#39;]
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;./hofx/output/hofx3d.aod_viirs_obs_202108042100.nc4&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">hofx</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;hofx&quot;</span><span class="p">)</span> <span class="c1"># need to specify group name</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">obs</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;ObsValue&quot;</span><span class="p">)</span> <span class="c1"># need to specify group name</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># plotting</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/site-packages/xarray/backends/api.py:687,</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span> <span class="n">decoders</span> <span class="o">=</span> <span class="n">_resolve_decoders_kwargs</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="n">decode_cf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span>     <span class="n">open_backend_dataset_parameters</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">open_dataset_parameters</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">683</span>     <span class="n">decode_coords</span><span class="o">=</span><span class="n">decode_coords</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">684</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">686</span> <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">687</span> <span class="n">backend_ds</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">688</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">689</span>     <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">690</span>     <span class="o">**</span><span class="n">decoders</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">693</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">_dataset_from_backend_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">694</span>     <span class="n">backend_ds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">705</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span> <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/site-packages/xarray/backends/netCDF4_.py:666,</span> in <span class="ni">NetCDF4BackendEntrypoint.open_dataset</span><span class="nt">(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, format, clobber, diskless, persist, auto_complex, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">644</span> <span class="k">def</span><span class="w"> </span><span class="nf">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">645</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">646</span>     <span class="n">filename_or_obj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">ReadBuffer</span> <span class="o">|</span> <span class="n">AbstractDataStore</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">663</span>     <span class="n">autoclose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span>     <span class="n">filename_or_obj</span> <span class="o">=</span> <span class="n">_normalize_path</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">666</span>     <span class="n">store</span> <span class="o">=</span> <span class="n">NetCDF4DataStore</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>         <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span>         <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">669</span>         <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span>         <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>         <span class="n">clobber</span><span class="o">=</span><span class="n">clobber</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">672</span>         <span class="n">diskless</span><span class="o">=</span><span class="n">diskless</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">673</span>         <span class="n">persist</span><span class="o">=</span><span class="n">persist</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">674</span>         <span class="n">auto_complex</span><span class="o">=</span><span class="n">auto_complex</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span>         <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>         <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span>     <span class="n">store_entrypoint</span> <span class="o">=</span> <span class="n">StoreBackendEntrypoint</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">680</span>     <span class="k">with</span> <span class="n">close_on_error</span><span class="p">(</span><span class="n">store</span><span class="p">):</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/site-packages/xarray/backends/netCDF4_.py:452,</span> in <span class="ni">NetCDF4DataStore.open</span><span class="nt">(cls, filename, mode, format, group, clobber, diskless, persist, auto_complex, lock, lock_maker, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;auto_complex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auto_complex</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="n">manager</span> <span class="o">=</span> <span class="n">CachingFileManager</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span>     <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">452</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span> <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/site-packages/xarray/backends/netCDF4_.py:393,</span> in <span class="ni">NetCDF4DataStore.__init__</span><span class="nt">(self, manager, group, mode, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span> <span class="o">=</span> <span class="n">group</span>
+<span class="g g-Whitespace">    </span><span class="mi">392</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
+<span class="ne">--&gt; </span><span class="mi">393</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">data_model</span>
+<span class="g g-Whitespace">    </span><span class="mi">394</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">filepath</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_remote</span> <span class="o">=</span> <span class="n">is_remote_uri</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/site-packages/xarray/backends/netCDF4_.py:461,</span> in <span class="ni">NetCDF4DataStore.ds</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span> <span class="k">def</span><span class="w"> </span><span class="nf">ds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">461</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/site-packages/xarray/backends/netCDF4_.py:455,</span> in <span class="ni">NetCDF4DataStore._acquire</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span> <span class="k">def</span><span class="w"> </span><span class="nf">_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">455</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">acquire_context</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span> <span class="k">as</span> <span class="n">root</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span>         <span class="n">ds</span> <span class="o">=</span> <span class="n">_nc4_require_group</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span>     <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/contextlib.py:141,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">141</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/site-packages/xarray/backends/file_manager.py:199,</span> in <span class="ni">CachingFileManager.acquire_context</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span> <span class="k">def</span><span class="w"> </span><span class="nf">acquire_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Context manager for acquiring a file.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">199</span>     <span class="n">file</span><span class="p">,</span> <span class="n">cached</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire_with_cache_info</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span>         <span class="k">yield</span> <span class="n">file</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_env/lib/python3.13/site-packages/xarray/backends/file_manager.py:217,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+<span class="ne">--&gt; </span><span class="mi">217</span> <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opener</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="c1"># ensure file doesn&#39;t get overridden when opened again</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2521,</span> in <span class="ni">netCDF4._netCDF4.Dataset.__init__</span><span class="nt">()</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2158,</span> in <span class="ni">netCDF4._netCDF4._ensure_nc_success</span><span class="nt">()</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/Users/maryamabdi/Work/JEDI/howtojedi/jedi_applications/run_hofx/hofx/output/hofx3d.aod_viirs_obs_202108042100.nc4&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hofx4d">
+<h2>HofX4D<a class="headerlink" href="#hofx4d" title="Link to this heading">#</a></h2>
+<div style="text-align: center;">
+    <img src="./figures/4DVar.jpg" width="500" height="450">
+</div><p>For the HofX4D approach, we take a model state that is valid at the beginning of the assimilation window (blue circle). We also take all the observations measured within the assimilation window (red circles). Next, we must extract the model value at the observation time and location. Computing the model state at every observation time using the full non-linear model is costly. Instead, we use a simplified (linear) model (dark blue arrows) to move the model state forward in time using a user-specified time step (<code class="docutils literal notranslate"><span class="pre">tstep</span></code>) and create smaller windows. Observations within each smaller window are assumed to be valid at the beginning of the window. Next, for each smaller window, model values at the observation locations are extracted to compute the H(x) values.</p>
+<p>The JEDI executable for this application is <code class="docutils literal notranslate"><span class="pre">fv3jedi_hofx.x</span></code></p>
+<section id="yaml-structure-hofx4d">
+<h3>YAML structure (HofX4D):<a class="headerlink" href="#yaml-structure-hofx4d" title="Link to this heading">#</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Beginning and length of assimilation window</span>
+<span class="nt">time window</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">begin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2021-08-04T21:00:00Z</span>
+<span class="w">  </span><span class="nt">length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT6H</span>
+<span class="nt">forecast length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT6H</span>
+
+<span class="c1"># Geometry of the model</span>
+<span class="nt">geometry</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">fms initialization</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namelist filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/geometry_input/fmsmpp.nml</span>
+<span class="w">  </span><span class="nt">akbk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/geometry_input/akbk72.nc4</span>
+<span class="w">  </span><span class="nt">npx</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<span class="w">  </span><span class="nt">npy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<span class="w">  </span><span class="nt">npz</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">72</span>
+<span class="w">  </span><span class="nt">field metadata override</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/geometry_input/geos.yaml</span>
+
+<span class="c1"># Simplified linear model used to move the state forward in time</span>
+<span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FV3LM</span>
+<span class="w">  </span><span class="nt">namelist filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/geometry_input/input_geos_c12.nml</span>
+<span class="w">  </span><span class="nt">tstep</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT15M</span>
+<span class="w">  </span><span class="c1">#tstep: PT6H # changing this impacts the result</span>
+<span class="w">  </span><span class="nt">lm_do_dyn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">lm_do_trb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">lm_do_mst</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">model variables</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ua</span><span class="p p-Indicator">,</span><span class="nv">va</span><span class="p p-Indicator">,</span><span class="nv">t</span><span class="p p-Indicator">,</span><span class="nv">delp</span><span class="p p-Indicator">,</span><span class="nv">sphum</span><span class="p p-Indicator">,</span><span class="nv">qi</span><span class="p p-Indicator">,</span><span class="nv">ql</span><span class="p p-Indicator">,</span><span class="nv">phis</span><span class="p p-Indicator">,</span><span class="nv">SO4</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="nv">BCPHOBIC</span><span class="p p-Indicator">,</span><span class="nv">BCPHILIC</span><span class="p p-Indicator">,</span><span class="nv">BRPHOBIC</span><span class="p p-Indicator">,</span><span class="nv">BRPHILIC</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="nv">DU</span><span class="p p-Indicator">,</span><span class="nv">DU002</span><span class="p p-Indicator">,</span><span class="nv">DU003</span><span class="p p-Indicator">,</span><span class="nv">DU004</span><span class="p p-Indicator">,</span><span class="nv">DU005</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="nv">SS</span><span class="p p-Indicator">,</span><span class="nv">SS002</span><span class="p p-Indicator">,</span><span class="nv">SS003</span><span class="p p-Indicator">,</span><span class="nv">SS004</span><span class="p p-Indicator">]</span>
+
+<span class="c1"># Initial condition valid at the beginning of the window</span>
+<span class="nt">initial condition</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">datetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2021-08-04T21:00:00Z</span>
+<span class="w">  </span><span class="nt">filetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cube sphere history</span>
+<span class="w">  </span><span class="nt">datapath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/geos_c12</span>
+<span class="w">  </span><span class="nt">filenames</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">aero_x48rt.abkg.eta.%yyyy%mm%dd_%hh%MMz.nc4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">met_x48rt.bkg_clcv.%yyyy%mm%dd_%hh%MMz.nc4</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">state variables</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ud</span><span class="p p-Indicator">,</span><span class="nv">vd</span><span class="p p-Indicator">,</span><span class="nv">ua</span><span class="p p-Indicator">,</span><span class="nv">va</span><span class="p p-Indicator">,</span><span class="nv">t</span><span class="p p-Indicator">,</span><span class="nv">delp</span><span class="p p-Indicator">,</span><span class="nv">q</span><span class="p p-Indicator">,</span><span class="nv">qi</span><span class="p p-Indicator">,</span><span class="nv">ql</span><span class="p p-Indicator">,</span><span class="nv">phis</span><span class="p p-Indicator">,</span><span class="nv">SO4</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="nv">BCPHOBIC</span><span class="p p-Indicator">,</span><span class="nv">BCPHILIC</span><span class="p p-Indicator">,</span><span class="nv">BRPHOBIC</span><span class="p p-Indicator">,</span><span class="nv">BRPHILIC</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="nv">DU</span><span class="p p-Indicator">,</span><span class="nv">DU002</span><span class="p p-Indicator">,</span><span class="nv">DU003</span><span class="p p-Indicator">,</span><span class="nv">DU004</span><span class="p p-Indicator">,</span><span class="nv">DU005</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="nv">SS</span><span class="p p-Indicator">,</span><span class="nv">SS002</span><span class="p p-Indicator">,</span><span class="nv">SS003</span><span class="p p-Indicator">,</span><span class="nv">SS004</span><span class="p p-Indicator">]</span>
+
+<span class="c1"># Observations measured throughout the assimilation window</span>
+<span class="c1"># But are assumed to be valid at the beginning of the assimilation window.</span>
+<span class="nt">observations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">observers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">obs space</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aod</span>
+<span class="w">      </span><span class="nt">obsdatain</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">engine</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H5File</span>
+<span class="w">          </span><span class="nt">obsfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/obs/aod_viirs_obs_202108042100.nc4</span>
+<span class="w">      </span><span class="nt">obsdataout</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">engine</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H5File</span>
+<span class="w">          </span><span class="nt">obsfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output/hofx4d.aod_viirs_obs_202108042100.nc4</span>
+<span class="w">      </span><span class="nt">simulated variables</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">aerosolOpticalDepth</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">channels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="nt">obs operator</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AodCRTM</span>
+<span class="w">      </span><span class="nt">Absorbers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">H2O</span><span class="p p-Indicator">,</span><span class="nv">O3</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">obs options</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">Sensor_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v.viirs-m_j1</span>
+<span class="w">        </span><span class="nt">EndianType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">little_endian</span>
+<span class="w">        </span><span class="nt">CoefficientPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inputs/crtm/</span>
+<span class="w">        </span><span class="nt">AerosolOption</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aerosols_gocart_default</span>
+<span class="w">        </span><span class="nt">model units coeff</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e9</span>
+<span class="w">    </span><span class="nt">obs error</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">covariance model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">diagonal</span>
+<span class="w">    </span><span class="nt">get values</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">time interpolation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linear</span>
+</pre></div>
+</div>
+<p>A few points about this experiment’s YAML file:</p>
+<ul class="simple">
+<li><p>When comparing HofX3D and HofX4D YAMLs, note that the <code class="docutils literal notranslate"><span class="pre">state:</span></code> section is replaced by <code class="docutils literal notranslate"><span class="pre">model:</span></code> and <code class="docutils literal notranslate"><span class="pre">initial</span> <span class="pre">condition:</span></code> sections.</p></li>
+<li><p>In this example, the <code class="docutils literal notranslate"><span class="pre">FV3LM</span></code> model is used as the “simplified model”. This is a linearized version of the FV3 dynamical core. More information about fv3-jedi-linearmodel <a class="reference external" href="https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/7.0.0/inside/jedi-components/fv3-jedi/classes.html#tlm">here</a>.</p></li>
+<li><p>The initial condition is valid at the beginning of the window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tstep</span></code> is set to 15 minutes, meaning that there will be a model state available every 15 minutes. These states are computed by running the <code class="docutils literal notranslate"><span class="pre">FV3LM</span></code> model.</p></li>
+<li><p>Similar to HofX3D, observations are valid throughout the window.</p></li>
+</ul>
+</section>
+<section id="running-hofx4d">
+<h3>Running HofX4D<a class="headerlink" href="#running-hofx4d" title="Link to this heading">#</a></h3>
+<p>Note that for HofX4D we use <code class="docutils literal notranslate"><span class="pre">fv3jedi_hofx.x</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$MPIEXEC</span><span class="w"> </span><span class="s2">&quot;-n&quot;</span><span class="w"> </span><span class="s2">&quot;6&quot;</span><span class="w"> </span><span class="nv">$JEDI_BUILD</span>/bin/fv3jedi_hofx.x<span class="w"> </span>hofx_fv3-geos_aero.yaml<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>log_hofx4d.txt
+</pre></div>
+</div>
+</section>
+<section id="examining-the-output-of-hofx4d-run">
+<h3>examining the output of HofX4D run<a class="headerlink" href="#examining-the-output-of-hofx4d-run" title="Link to this heading">#</a></h3>
+<p>Like the HofX3D exercise, you can view the output log and take note of the costly tasks.
+The output file has a similar format to the output file from the HofX3D exercise. The Python script below creates a scatter plot showing H(x) vs. obs values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;./hofx/output/hofx4d.aod_viirs_obs_202108042100.nc4&quot;</span>
+<span class="n">hofx</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;hofx&quot;</span><span class="p">)</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;ObsValue&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;aerosolOpticalDepth&#39;</span><span class="p">],</span> <span class="n">hofx</span><span class="p">[</span><span class="s1">&#39;aerosolOpticalDepth&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">5.1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">5.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;AOD Obs&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;AOD H(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;AOD obs vs model -- HofX4D&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/aae7440bac691fda92c07463f4c22200c32b9e476772f60e0edf2c927b068f85.png" src="../../_images/aae7440bac691fda92c07463f4c22200c32b9e476772f60e0edf2c927b068f85.png" />
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="comparing-the-two-experiments">
+<h2>Comparing the two experiments<a class="headerlink" href="#comparing-the-two-experiments" title="Link to this heading">#</a></h2>
+<div class="alert alert-block alert-warning"> in progress </div>
+<ul class="simple">
+<li><p>compare run time</p></li>
+<li><p>compare the hofx values</p></li>
+</ul>
+<p>The script below compares the HofX values calculated by the two 3D and 4D methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxNLocator</span><span class="p">,</span> <span class="n">FuncFormatter</span>
+
+<span class="n">filename_3d</span> <span class="o">=</span> <span class="s2">&quot;./hofx/output/hofx3d.aod_viirs_obs_202108042100.nc4&quot;</span>
+<span class="n">filename_4d</span> <span class="o">=</span> <span class="s2">&quot;./hofx/output/hofx4d.aod_viirs_obs_202108042100.nc4&quot;</span>
+
+<span class="n">hofx_3d</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename_3d</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;hofx&quot;</span><span class="p">)</span>
+<span class="n">obs_3d</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename_3d</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;ObsValue&quot;</span><span class="p">)</span>
+
+<span class="n">hofx_4d</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename_4d</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;hofx&quot;</span><span class="p">)</span>
+<span class="n">obs_4d</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename_4d</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;ObsValue&quot;</span><span class="p">)</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename_3d</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;MetaData&quot;</span><span class="p">)</span>
+<span class="n">datetime</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="s1">&#39;dateTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">datetime</span><span class="p">,</span> <span class="n">hofx_3d</span><span class="p">[</span><span class="s1">&#39;aerosolOpticalDepth&#39;</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hofx3D&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">datetime</span><span class="p">,</span> <span class="n">hofx_4d</span><span class="p">[</span><span class="s1">&#39;aerosolOpticalDepth&#39;</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hofx4D&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">nbins</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;AOD H(x)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9e7a5f13e6f09f0c363275286878018ce7ea8882cb562120f94bac724f1ad2d2.png" src="../../_images/9e7a5f13e6f09f0c363275286878018ce7ea8882cb562120f94bac724f1ad2d2.png" />
+</div>
+</div>
+</section>
+<section id="further-reading-and-ctest-examples">
+<h2>Further reading and ctest examples<a class="headerlink" href="#further-reading-and-ctest-examples" title="Link to this heading">#</a></h2>
+<div class="alert alert-block alert-warning"> in progress </div>
+<ul class="simple">
+<li><p>You can use ctest <code class="docutils literal notranslate"><span class="pre">fv3jedi_test_tier1_hofx_fv3-geos_cf</span></code> in <a class="reference external" href="https://github.com/JCSDA-internal/fv3-jedi/blob/1.8.0/test/CMakeLists.txt#L1107">fv3-jedi</a> as an <a class="reference external" href="https://github.com/JCSDA-internal/fv3-jedi/blob/1.8.0/test/testinput/hofx_fv3-geos_cf.yaml">example</a>.</p></li>
+<li><p>The JEDI code is under active development, and some of the YAML keys used in the examples may change over time. As a result, this document may become outdated. It’s important for users to understand both the structure of the YAML files and the meaning of the keys, while also consulting the latest ctest examples in the JEDI repositories.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./jedi_applications/run_hofx"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../jedi_utils/run_convert_to_latlon/convert_to_latlon.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Converting cubed sphere to lat/lon grid using JEDI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="run_hofx_save_geovals.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Running hofx application in JEDI and saving GeoVaLs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">prerequisite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducton">Introducton:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hofx3d">HofX3D</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml-structure-hofx3d">YAML structure (HofX3D):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-hofx3d">Running HofX3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-the-output-of-hofx3d-run">examining the output of HofX3D run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hofx4d">HofX4D</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml-structure-hofx4d">YAML structure (HofX4D):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-hofx4d">Running HofX4D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-the-output-of-hofx4d-run">examining the output of HofX4D run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-the-two-experiments">Comparing the two experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading-and-ctest-examples">Further reading and ctest examples</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Maryam Abdi-Oskouei (GMAO)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

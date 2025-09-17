@@ -1,0 +1,763 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Running 4DVar application in JEDI (on Discover) &#8212; How to JEDI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'jedi_applications/run_var/4dvar/run_4dvar_discover';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="Running hofx application in JEDI and saving GeoVaLs" href="../../run_hofx/run_hofx_save_geovals.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">How to JEDI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    How to use JEDI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">How to use JEDI utilities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../jedi_utils/run_convert_to_latlon/convert_to_latlon.html">Converting cubed sphere to lat/lon grid using JEDI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">How to run JEDI applications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../run_hofx/run_hofx.html">Running hofx application in JEDI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../run_hofx/run_hofx_save_geovals.html">Running hofx application in JEDI and saving GeoVaLs</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Running 4DVar application in JEDI (on Discover)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mer-a-o/howtojedi" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mer-a-o/howtojedi/edit/main/jedi_applications/run_var/4dvar/run_4dvar_discover.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mer-a-o/howtojedi/issues/new?title=Issue%20on%20page%20%2Fjedi_applications/run_var/4dvar/run_4dvar_discover.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/jedi_applications/run_var/4dvar/run_4dvar_discover.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Running 4DVar application in JEDI (on Discover)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-modules">Loading Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml-structure">YAML Structure</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="running-4dvar-application-in-jedi-on-discover">
+<h1>Running 4DVar application in JEDI (on Discover)<a class="headerlink" href="#running-4dvar-application-in-jedi-on-discover" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<section id="loading-modules">
+<h2>Loading Modules<a class="headerlink" href="#loading-modules" title="Link to this heading">#</a></h2>
+<p>To Load Spack Stack <strong>1.9</strong> modules with GNU compiler on Discover run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Loading EWOK-SKYLAB Environment Using Spack-Stack 1.9.0&quot;</span>
+
+<span class="c1"># load modules</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>use<span class="w"> </span>/discover/swdev/gmao_SIteam/modulefiles-SLES15
+module<span class="w"> </span>use<span class="w"> </span>/discover/swdev/jcsda/spack-stack/scu17/modulefiles
+
+module<span class="w"> </span>use<span class="w"> </span>/gpfsm/dswdev/jcsda/spack-stack/scu17/spack-stack-1.9.0/envs/ue-gcc-12.3.0/install/modulefiles/Core
+module<span class="w"> </span>load<span class="w"> </span>stack-gcc/12.3.0
+module<span class="w"> </span>load<span class="w"> </span>stack-openmpi/4.1.6
+module<span class="w"> </span>load<span class="w"> </span>stack-python/3.11.7
+
+module<span class="w"> </span>load<span class="w"> </span>singularity
+
+<span class="c1"># Discover compiler modules set environment variable COMPILER, need to repair for R2D2</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">COMPILER</span><span class="o">=</span>gnu
+
+module<span class="w"> </span>load<span class="w"> </span>jedi-fv3-env
+module<span class="w"> </span>load<span class="w"> </span>ewok-env
+</pre></div>
+</div>
+<p>To Load Spack Stack <strong>1.7.0</strong> modules with GNU compiler on Discover run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Loading EWOK-SKYLAB Environment Using Spack-Stack 1.7.0 GNU SCU17&quot;</span>
+
+<span class="c1"># load modules</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>use<span class="w"> </span>/discover/swdev/gmao_SIteam/modulefiles-SLES15
+module<span class="w"> </span>use<span class="w"> </span>/discover/swdev/jcsda/spack-stack/scu17/modulefiles
+module<span class="w"> </span>load<span class="w"> </span>ecflow/5.11.4
+
+module<span class="w"> </span>use<span class="w"> </span>/gpfsm/dswdev/jcsda/spack-stack/scu17/spack-stack-1.7.0/envs/ue-gcc-12.3.0/install/modulefiles/Core
+module<span class="w"> </span>load<span class="w"> </span>stack-gcc/12.3.0
+module<span class="w"> </span>load<span class="w"> </span>stack-openmpi/4.1.6
+module<span class="w"> </span>load<span class="w"> </span>stack-python/3.10.13
+
+<span class="c1"># Discover compiler modules set environment variable COMPILER, need to repair for R2D2</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">COMPILER</span><span class="o">=</span>gnu
+
+module<span class="w"> </span>load<span class="w"> </span>jedi-fv3-env
+module<span class="w"> </span>load<span class="w"> </span>ewok-env
+module<span class="w"> </span>load<span class="w"> </span>sp
+
+<span class="c1"># To build more expensive fv3-jedi (tier 2) tests</span>
+<span class="c1">#export FV3JEDI_TEST_TIER=2</span>
+</pre></div>
+</div>
+<p>Check <a class="reference external" href="https://github.com/JCSDA-internal/jedi-tools/blob/develop/buildscripts/setup/discover-mil_setup_gnu.sh">here</a> for the latest Spack-Stack modules on Discover. Note that this is a JCSDA private repository.</p>
+<p>To build the <code class="docutils literal notranslate"><span class="pre">jedi-bundle</span></code> follow the <a class="reference external" href="https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/using/running_skylab/running_skylab.html#build-jedi-bundle">insturctions</a> here.</p>
+<p>For a (slightly) faster build, comment out these repos in <code class="docutils literal notranslate"><span class="pre">jedi-bundle/CMakeLists.txt</span></code>: <code class="docutils literal notranslate"><span class="pre">MOM6</span></code>, <code class="docutils literal notranslate"><span class="pre">soca</span></code>, <code class="docutils literal notranslate"><span class="pre">MPAS-Model</span></code>, <code class="docutils literal notranslate"><span class="pre">mpas-jedi</span></code>, and <code class="docutils literal notranslate"><span class="pre">coupling</span></code>.</p>
+</section>
+<section id="yaml-structure">
+<h2>YAML Structure<a class="headerlink" href="#yaml-structure" title="Link to this heading">#</a></h2>
+<p>The JEDI code is under active development, and some of the YAML keys used in the examples may change over time. As a result, this document may become outdated. It’s important for users to understand both the structure of the YAML files and the meaning of the keys, while also consulting the latest ctest examples in the JEDI repositories.</p>
+<p>This section provides an overview of the different components within the 4DVar YAML files.</p>
+<p><code class="docutils literal notranslate"><span class="pre">/discover/nobackup/mabdiosk/garage/applications/var-app</span></code> includes the YAML files for running different 4dvar cases, the input files, and a run script (<code class="docutils literal notranslate"><span class="pre">run_4dvar.sh</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">4dvar_geos-cf_fv3lm_c24_p12.yaml</span></code> is a 4dvar experiment example at C24 resolution.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">cost function</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cost type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4D-Var</span>
+<span class="w">  </span><span class="nt">time window</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">begin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2021-08-05T03:00:00Z</span><span class="w"> </span><span class="c1">#always beginning of the window</span>
+<span class="w">    </span><span class="nt">length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT6H</span>
+</pre></div>
+</div>
+<p>In this example, the assimilation window is from <code class="docutils literal notranslate"><span class="pre">2021-08-05</span> <span class="pre">03Z</span></code> to <code class="docutils literal notranslate"><span class="pre">2021-08-05</span> <span class="pre">09Z</span></code>.</p>
+<p>The beginning of the time window does not depend on the DA method (<code class="docutils literal notranslate"><span class="pre">cost</span> <span class="pre">type</span></code>) and is always set to the beginning of the assimilation window.</p>
+<p>The length of the window is typically set to 6H.</p>
+<hr class="docutils" />
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">model</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FV3LM</span>
+<span class="w">    </span><span class="nt">namelist filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input/geometry_input/input_geos_c24_p12.nml</span>
+<span class="w">    </span><span class="nt">tstep</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT15M</span>
+<span class="w">    </span><span class="nt">filetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cube sphere history</span>
+<span class="w">    </span><span class="nt">lm_do_dyn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">lm_do_trb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">lm_do_mst</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">model variables</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;modelvars</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ud</span><span class="p p-Indicator">,</span><span class="nv">vd</span><span class="p p-Indicator">,</span><span class="nv">ua</span><span class="p p-Indicator">,</span><span class="nv">va</span><span class="p p-Indicator">,</span><span class="nv">T</span><span class="p p-Indicator">,</span><span class="nv">DELP</span><span class="p p-Indicator">,</span><span class="nv">SPHU</span><span class="p p-Indicator">,</span><span class="nv">qi</span><span class="p p-Indicator">,</span><span class="nv">ql</span><span class="p p-Indicator">,</span><span class="nv">NO2</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>In 4DVar, you need to compute (or pre-compute) the model state at every <code class="docutils literal notranslate"><span class="pre">tstep</span></code> within the assimilation window. Ideally, you want to run the full model and generate the model state at every <code class="docutils literal notranslate"><span class="pre">tstep</span></code>, but this can be costly. To reduce cost, you can 1) compute the model state using a simplified model such as <code class="docutils literal notranslate"><span class="pre">FV3LM</span></code> or 2) read the pre-computed model state using <code class="docutils literal notranslate"><span class="pre">PSEUDO</span></code>). In this example, we are using <code class="docutils literal notranslate"><span class="pre">FV3LM</span></code>. See <code class="docutils literal notranslate"><span class="pre">4dvar_geos-cf_pseudo.yaml</span></code> for a <code class="docutils literal notranslate"><span class="pre">PSEUDO</span></code> example.</p>
+<p><code class="docutils literal notranslate"><span class="pre">FV3LM</span></code> model requires <code class="docutils literal notranslate"><span class="pre">ud,vd,ua,va,T,DELP,SPHU,qi,ql</span></code> to be on the <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">variables</span></code> list (and be available in the background files). Trace gas and aerosol variables can be added to this list and will be treated as tracers (only get transported, similar to moisture).</p>
+<p>Linear turbulence scheme and linear moist physics are turned off.</p>
+<hr class="docutils" />
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">analysis variables</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">eastward_wind</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="nv">northward_wind</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="nv">air_temperature</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="nv">air_pressure_thickness</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="nv">specific_humidity</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="nv">cloud_liquid_ice</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="nv">cloud_liquid_water</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="nv">volume_mixing_ratio_of_no2</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>The list of variables you want to assimilate. These will be available in the analysis output. Note that the first 7 variables (everything except no2) are required to be on the list.</p>
+<hr class="docutils" />
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">geometry</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">fms initialization</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">namelist filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input/geometry_input/fmsmpp.nml</span>
+<span class="w">    </span><span class="nt">akbk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input/geometry_input/akbk72.nc4</span>
+<span class="w">    </span><span class="nt">npx</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span>
+<span class="w">    </span><span class="nt">npy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span>
+<span class="w">    </span><span class="nt">npz</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">72</span>
+<span class="w">    </span><span class="nt">layout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="nv">2</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">field metadata override</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input/geometry_input/geos_cf_ewok.yaml</span>
+</pre></div>
+</div>
+<p>This section is repeated a few times in this YAML file and always exists in almost all of the JEDI YAML files. Here, you can define the geometry (grid setup) of your background (input) files. We have background files at <code class="docutils literal notranslate"><span class="pre">C24</span></code> resolution with 72 vertical levels.</p>
+<p><code class="docutils literal notranslate"><span class="pre">layout</span></code> is another important setting that can change depending on the number of processors you use to run the application. With the layout of <code class="docutils literal notranslate"><span class="pre">[1,2]</span></code> (for each tile), you must use “1x2x6” or “12” processors (there are 6 tiles in total). If the layout is <code class="docutils literal notranslate"><span class="pre">[2,2]</span></code> you will need “2x2x6” or “24” processors.</p>
+<p><code class="docutils literal notranslate"><span class="pre">field</span> <span class="pre">metadata</span> <span class="pre">override</span></code> is a list that maps the variables in the background files to JEDI. <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">name</span></code> in this file refers to the variable name in <a class="reference external" href="https://github.com/JCSDA/fv3-jedi/blob/1.8.0/src/fv3jedi/FieldMetadata/FieldsMetadataDefault.h">fv3-jedi</a> and <code class="docutils literal notranslate"><span class="pre">io</span> <span class="pre">name</span></code> refers to the variable name in the background (input) files.</p>
+<hr class="docutils" />
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">background</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">datetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2021-08-05T03:00:00Z</span><span class="w">  </span><span class="c1">#background beginning of the window</span>
+<span class="w">    </span><span class="nt">filetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cube sphere history</span>
+<span class="w">    </span><span class="nt">datapath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input/bg/geoscf_c24_ewok</span>
+<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GCv14.0_GCMv1.17_c24.geoscf_jedi.%yyyy%mm%ddT%hh%MM%ssZ.nc4</span>
+<span class="w">    </span><span class="nt">state variables</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ud</span><span class="p p-Indicator">,</span><span class="nv">vd</span><span class="p p-Indicator">,</span><span class="nv">ua</span><span class="p p-Indicator">,</span><span class="nv">va</span><span class="p p-Indicator">,</span><span class="nv">T</span><span class="p p-Indicator">,</span><span class="nv">SPHU</span><span class="p p-Indicator">,</span><span class="nv">qi</span><span class="p p-Indicator">,</span><span class="nv">ql</span><span class="p p-Indicator">,</span><span class="nv">DELP</span><span class="p p-Indicator">,</span><span class="nv">NO2</span><span class="p p-Indicator">,</span><span class="nv">phis</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>In 4DVar, the background must be available at the beginning of the assimilation window.</p>
+<p><code class="docutils literal notranslate"><span class="pre">state</span> <span class="pre">variables</span></code> is the list of variables that JEDI is going to read from the background files and put in “state”. Anything that is listed under <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">variables</span></code> must be under <code class="docutils literal notranslate"><span class="pre">state</span> <span class="pre">variables</span></code> too.</p>
+<hr class="docutils" />
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">background error</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">covariance model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SABER</span>
+<span class="w">    </span><span class="nt">saber central block</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">saber block name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ID</span>
+</pre></div>
+</div>
+<p>In this example, for simplicity, we are using an Identity matrix for background error.</p>
+<hr class="docutils" />
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">observations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">observers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">obs space</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NO2</span>
+<span class="w">        </span><span class="nt">obsdatain</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">engine</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H5File</span>
+<span class="w">            </span><span class="nt">obsfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input/obs/obs.tropomi_s5p_no2_tropo.2021-08-05T060000Z.nc4</span>
+<span class="w">        </span><span class="nt">obsdataout</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">engine</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H5File</span>
+<span class="w">            </span><span class="nt">obsfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output/fb.4dvar.c24.tropomi_s5p_no2_tropo.20210805T060000Z.nc</span>
+<span class="w">        </span><span class="nt">simulated variables</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">nitrogendioxideColumn</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">obs operator</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ColumnRetrieval</span>
+<span class="w">        </span><span class="nt">nlayers_retrieval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">34</span>
+<span class="w">        </span><span class="nt">tracer variables</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">volume_mixing_ratio_of_no2</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">isApriori</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">isAveragingKernel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">stretchVertices</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">topbottom</span><span class="w"> </span><span class="c1">#options: top, bottom, topbottom, none</span>
+<span class="w">      </span><span class="nt">obs error</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">covariance model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">diagonal</span>
+<span class="w">      </span><span class="nt">get values</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">time interpolation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linear</span>
+</pre></div>
+</div>
+<p>Observation, observation operator specification is listed here. Note that <code class="docutils literal notranslate"><span class="pre">obsfile</span></code> under <code class="docutils literal notranslate"><span class="pre">obsdatain</span></code> points to a tropomi no2 observations file. This file includes measurements from <code class="docutils literal notranslate"><span class="pre">03Z</span></code> to <code class="docutils literal notranslate"><span class="pre">09Z</span></code>, which is throughout our assimilation window.</p>
+<p>The output file specified under <code class="docutils literal notranslate"><span class="pre">obsdataout</span></code> is the feedback file. It includes observation values and model (background) values at observation location/time or <code class="docutils literal notranslate"><span class="pre">hofx0</span></code> values. <code class="docutils literal notranslate"><span class="pre">hofx1</span></code> is the analysis values (after one outer loop iteration) at observation location/time. <code class="docutils literal notranslate"><span class="pre">oman</span></code> is (observation - analysis) and <code class="docutils literal notranslate"><span class="pre">ombg</span></code> is (observation - background).</p>
+<hr class="docutils" />
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">final</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">diagnostics</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">departures</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oman</span>
+<span class="w">  </span><span class="nt">analysis to latlon</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">local interpolator type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oops unstructured grid interpolator</span>
+<span class="w">    </span><span class="nt">resolution in degrees</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15.0</span><span class="w">  </span><span class="c1"># low resolution for testing</span>
+<span class="w">    </span><span class="nt">variables to output</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">volume_mixing_ratio_of_no2</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1">#pressure levels in hPa: [500]</span>
+<span class="w">    </span><span class="nt">model levels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">71</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1">#bottom model level: true</span>
+<span class="w">    </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT3H</span>
+<span class="w">    </span><span class="nt">datapath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">    </span><span class="nt">exp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4dvar.c24</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">an</span>
+<span class="w">    </span>
+<span class="nt">output</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">filetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cube sphere history</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geos</span>
+<span class="w">  </span><span class="nt">datapath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output/</span>
+<span class="w">  </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ana.4dvar.c24.%yyyy%mm%dd_%hh%MM%ssz.nc4</span>
+<span class="w">  </span><span class="nt">first</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT0H</span>
+<span class="w">  </span><span class="nt">frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT6H</span>
+</pre></div>
+</div>
+<p>It is possible to write out analysis (and increment) output in lat/lon grid at specific model or pressure level by setting <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">to</span> <span class="pre">latlon</span></code> under the <code class="docutils literal notranslate"><span class="pre">final</span></code> section. The lat/lon filename will have a prefix of <code class="docutils literal notranslate"><span class="pre">exp</span></code> and suffix of <code class="docutils literal notranslate"><span class="pre">latlon.modelLevels.nc</span></code>
+output filename will be <code class="docutils literal notranslate"><span class="pre">4dvar.c24.an.*Z.latlon.modelLevels.nc</span></code></p>
+<p>The frequency of analysis output can be set as low as <code class="docutils literal notranslate"><span class="pre">tstep</span></code> under <code class="docutils literal notranslate"><span class="pre">model</span></code>. The frequency of <code class="docutils literal notranslate"><span class="pre">PT6H</span></code> means that there will be two analysis files generated at the beginning and beginning + 6H (end) of the window.</p>
+<hr class="docutils" />
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">variational</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minimizer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">algorithm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DRPCG</span>
+<span class="w">  </span><span class="nt">iterations</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ninner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">    </span><span class="nt">gradient norm reduction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1e-10</span>
+<span class="w">    </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">on</span>
+<span class="w">    </span><span class="nt">geometry</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">akbk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input/geometry_input/akbk72.nc4</span>
+<span class="w">      </span><span class="nt">npx</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span>
+<span class="w">      </span><span class="nt">npy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span>
+<span class="w">      </span><span class="nt">npz</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">72</span>
+<span class="w">      </span><span class="nt">layout</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="nv">2</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">field metadata override</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input/geometry_input/geos_cf_ewok.yaml</span>
+<span class="w">    </span><span class="nt">diagnostics</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">departures</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ombg</span>
+
+<span class="w">    </span><span class="nt">linear model</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FV3JEDITLM</span>
+<span class="w">      </span><span class="nt">namelist filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input/geometry_input/input_geos_c24_p12.nml</span>
+<span class="w">      </span><span class="nt">linear model namelist filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input/geometry_input/inputpert_4dvar.nml</span>
+<span class="w">      </span><span class="nt">tstep</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT15M</span>
+<span class="w">      </span><span class="nt">tlm variables</span><span class="p">:</span><span class="w"> </span><span class="nv">*modelvars</span>
+<span class="w">      </span><span class="nt">lm_do_dyn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">lm_do_trb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="nt">lm_do_mst</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="nt">trajectory</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">model variables</span><span class="p">:</span><span class="w"> </span><span class="nv">*modelvars</span>
+</pre></div>
+</div>
+<p>This section sets up the minimizer for the 4dvar experiment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ninner</span></code> is the number of iterations in the inner loop. For testing is set to 2. In scientific experiments, it is usually set to a larger number like 100. <code class="docutils literal notranslate"><span class="pre">gradient</span> <span class="pre">norm</span> <span class="pre">reduction</span></code> is the threshold for convergance.</p>
+<p>In JEDI, you can run the minimizer in a different (coarser) resolution to reduce the computation cost. Here it is set to the same resolution as the analysis.</p>
+<p><code class="docutils literal notranslate"><span class="pre">FV3JEDITLM</span></code> is the adjoint of the tangent linear model used for iterative minimization of the cost function. <code class="docutils literal notranslate"><span class="pre">namelist</span> <span class="pre">filename</span></code> changes with model resolution and layout. Make sure what is specified in this file matches the 4dvar YAML.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tstep</span></code> for <code class="docutils literal notranslate"><span class="pre">FV3JEDITLM</span></code> cannot be smaller than <code class="docutils literal notranslate"><span class="pre">tstep</span></code> in <code class="docutils literal notranslate"><span class="pre">FV3LM</span></code> (or <code class="docutils literal notranslate"><span class="pre">PSEUDO</span></code>) meaning that you need to have model states available at every step of <code class="docutils literal notranslate"><span class="pre">FV3JEDITLM</span></code>.</p>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">tlm</span> <span class="pre">variables</span></code> and <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">variables</span></code> under <code class="docutils literal notranslate"><span class="pre">trajectory</span></code> are the same as <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">variables</span></code> under <code class="docutils literal notranslate"><span class="pre">FV3LM</span></code>.</p>
+<p>To run this application, log into a compute node</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">JEDIBUILD</span><span class="o">=</span>/discover/nobackup/mabdiosk/jedi-bundle/build-gnu-spack-1.7.0/bin/
+<span class="nb">export</span><span class="w"> </span><span class="nv">WORKDIR</span><span class="o">=</span>/gpfsm/dnb33/mabdiosk/garage/applications/var-app
+
+/discover/swdev/gmao_SIteam/MPI/openmpi/4.1.6-SLES15/gcc-12.3.0/bin/mpiexec<span class="w"> </span><span class="s2">&quot;-n&quot;</span><span class="w"> </span><span class="s2">&quot;12&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$JEDIBUILD</span><span class="s2">/fv3jedi_var.x&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WORKDIR</span><span class="s2">/4dvar_geos-cf_fv3lm_c24_p12.yaml&quot;</span>
+</pre></div>
+</div>
+<p>The JEDI executable to run variational applications (3D or 4DVar) is <code class="docutils literal notranslate"><span class="pre">fv3jedi_var.x</span></code></p>
+<p>Note that here we are requesting 12 processors.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./jedi_applications/run_var/4dvar"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../run_hofx/run_hofx_save_geovals.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Running hofx application in JEDI and saving GeoVaLs</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-modules">Loading Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml-structure">YAML Structure</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Maryam Abdi-Oskouei (GMAO)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
