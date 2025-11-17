@@ -22,6 +22,4 @@ DISCOVER users can use [the jedi_bundle tool](https://github.com/geos-esm/jedi_b
    1. [Converting cubed sphere to lat/lon grid using JEDI](https://mer-a-o.github.io/howtojedi/jedi_utils/run_convert_to_latlon/convert_to_latlon.html)
    2. [Running HofX and saving GeoVaLs](https://mer-a-o.github.io/howtojedi/jedi_applications/run_hofx/run_hofx_save_geovals.html)
 
-   3. Changing the resolution of model output files
-
 
