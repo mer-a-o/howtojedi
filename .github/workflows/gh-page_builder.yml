@@ -20,9 +20,21 @@ jobs:
         pip install jupyter-book ghp-import
         # pip install -r book/requirements.txt   # if you have one
 
+
+    - name: Check required files
+      run: |
+        test -f _config.yml
+        test -f _toc.yml
+        test -f README.md
+
+
+
     - name: Build Jupyter Book
       run: |
-        jupyter-book build .
+        pwd
+        ls
+        jupyter-book build . --verbose
+        ls
 
     - name: Publish to GitHub Pages
       run: |
