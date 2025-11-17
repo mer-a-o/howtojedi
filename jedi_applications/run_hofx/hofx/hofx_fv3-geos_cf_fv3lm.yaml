@@ -70,7 +70,7 @@ observations:
       obsdataout:
         engine:
           allow overwrite: true
-          obsfile: output/fb.tempo_no2_tropo.20230805T150000Z.nc
+          obsfile: output/fb.hofx4d.tempo_no2_tropo.20230805T150000Z.nc
           type: H5File
       observed variables:
       - nitrogendioxideColumn
