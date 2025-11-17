@@ -21,14 +21,6 @@ jobs:
         # pip install -r book/requirements.txt   # if you have one
 
 
-    - name: Check required files
-      run: |
-        test -f _config.yml
-        test -f _toc.yml
-        test -f README.md
-
-
-
     - name: Build Jupyter Book
       run: |
         pwd
