@@ -33,7 +33,7 @@ jobs:
       run: |
         pwd
         ls
-        jupyter-book build . --verbose
+        jupyter-book build .
         ls
 
     - name: Publish to GitHub Pages
