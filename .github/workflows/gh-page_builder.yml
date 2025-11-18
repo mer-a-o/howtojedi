@@ -13,20 +13,16 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'
+        python-version: '3.11'  # v2 works better with newer Python
 
     - name: Install dependencies
       run: |
         pip install jupyter-book ghp-import
-        # pip install -r book/requirements.txt   # if you have one
-
+        # pip install -r requirements.txt   # if you have one
 
     - name: Build Jupyter Book
       run: |
-        pwd
-        ls
-        jupyter-book build .
-        ls
+        jupyter-book build --all
 
     - name: Publish to GitHub Pages
       run: |

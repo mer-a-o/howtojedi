@@ -1,0 +1,7 @@
+version: 1
+project:
+  title: My sample book
+  authors:
+    - name: The Jupyter Book Community
+site:
+  template: book-theme
