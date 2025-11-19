@@ -5,14 +5,15 @@ format: jb-book
 root: README
 
 parts:
-- caption: How to run JEDI applications
+- caption: JEDI applications
   chapters:
     - file: jedi_applications/run_hofx/run_hofx3D.ipynb
-    - file: jedi_applications/run_hofx/run_hofx_save_geovals.ipynb
-    - file: jedi_applications/run_var/4dvar/run_4dvar_discover.ipynb
+    - file: jedi_applications/run_hofx/run_hofx4D.ipynb
+#    - file: jedi_applications/run_hofx/run_hofx_save_geovals.ipynb
+#    - file: jedi_applications/run_var/4dvar/run_4dvar_discover.ipynb
 #    - file: jedi_applications/run_3dvar/run_3dvar.ipynb
 
-- caption: How to use JEDI utilities
+- caption: JEDI utitlies
   chapters:
     - file: jedi_utils/run_convert_to_latlon/convert_to_latlon.ipynb
 #    - file: jedi_utils/change_resolution/change_resolution.ipynb

@@ -1,7 +1,11 @@
 version: 1
 project:
-  title: My sample book
-  authors:
-    - name: The Jupyter Book Community
+  title: Practical examples for running JEDI
+  description: |
+    A series of practical examples for running the Joint Effort for Data Assimilation Intergration (JEDI)
+  github: https://github.com/mer-a-o/howtojedi
+      
 site:
   template: book-theme
+  title: JEDI Applications
+
