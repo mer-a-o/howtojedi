@@ -23,12 +23,8 @@ jobs:
     - name: Build Jupyter Book
       run: |
         jupyter-book build --all
-        
-    - name: Check build output
-      run: |
-        ls -la _build/
-        find _build -type d -name "html" -o -name "site"
+        jupyter-book build --html
 
     - name: Publish to GitHub Pages
       run: |
-        ghp-import -n -p -f _build/site
+        ghp-import -n -p -f _build/html
