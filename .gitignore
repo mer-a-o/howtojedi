@@ -1,5 +1,5 @@
 *.ipynb_checkpoints*
-output
+#output
 .DS_Store
 logfile.000000.out
 _build
