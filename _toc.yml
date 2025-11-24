@@ -5,6 +5,10 @@ format: jb-book
 root: README
 
 parts:
+- caption: Running JEDI on Discover
+  chapters:
+  - file: setups/discover.ipynb
+
 - caption: JEDI applications
   chapters:
     - file: jedi_applications/run_hofx/run_hofx3D.ipynb

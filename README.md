@@ -1,24 +1,8 @@
 
-# Learn JEDI
+#  Practical examples for running JEDI
 
-This tutorial series is designed to help you run the Joint Effort for Data assimilation Integration (JEDI) system through small, practical examples.
+This tutorial series is designed to help you run the Joint Effort for Data assimilation Integration (JEDI) system through small, hands-on examples.
 
 Please note that JEDI is under active development, so some YAML keys and configurations may change over time. If you encounter differences, refer to the ctest examples in the official JEDI code repositories for the most up-to-date reference. Each tutorial includes links to the relevant ctest examples to help you explore further.
 
-
-## Requirements:
-This tutorial assumes that you have set up your work environment (which can be done by loading [Spack-Stack modules](https://spack-stack.readthedocs.io/en/1.5.1/PreConfiguredSites.html) or using JCSDA [containers](https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/using/jedi_environment/containers/container_overview.html)) and that you have built [jedi-bundle](https://jointcenterforsatellitedataassimilation-jedi-docs.readthedocs-hosted.com/en/latest/using/building_and_running/building_jedi.html).
-
-
-## Table of Contents:
-0. [Discover Setup](setups/discover.ipynb)
-1. How to run JEDI applications. This section includes tutorials about various Data Assimilation concepts and methods.
-   1. [Running HofX3D application with JEDI](jedi_applications/run_hofx/run_hofx3D.ipynb)
-   2. [Running HofX4D application with JEDI](jedi_applications/run_hofx/run_hofx4D.ipynb)
-   3. [Running HofX and saving GeoVaLs](jedi_applications/run_hofx/run_hofx_save_geovals.ipynb)
-   4. [Running 4DVar application on Discover](jedi_applications/run_var/4dvar/run_4dvar_discover.ipynb)
-
-
-2. How to use JEDI utilities. This section includes examples of the JEDI utilities available for pre- or post-processing.
-   1. [Converting cubed sphere to lat/lon grid using JEDI](jedi_utils/run_convert_to_latlon/convert_to_latlon.ipynb)
-   2. Changing the resolution of model output files
+To view the practical examples you can navigate through to [GitHub repository](https://github.com/mer-a-o/howtojedi) and view the Jupyter Notebooks or use the Jupyter Book, for easier navigation, available [here](https://mer-a-o.github.io/howtojedi). 
