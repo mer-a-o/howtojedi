@@ -1,0 +1,9 @@
+variable maps:
+  - name: nitrogendioxideInsitu
+    alias: volume_mixing_ratio_of_no2
+
+  - name: carbonmonoxideInsitu
+    alias: volume_mixing_ratio_of_co
+
+  - name: ozoneInsitu
+    alias: volume_mixing_ratio_of_o3
