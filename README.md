@@ -1,5 +1,5 @@
 
-#  Practical examples for running JEDI
+#  Overview of the JEDI Practical Tutorials
 
 This tutorial series is designed to help you run the Joint Effort for Data assimilation Integration (JEDI) system through small, hands-on examples.
 
