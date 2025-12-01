@@ -1,11 +1,11 @@
 version: 1
 project:
-  title: Practical examples for running JEDI
+  title: JEDI hands-on examples
   description: |
     A series of practical examples for running the Joint Effort for Data Assimilation Intergration (JEDI)
   github: https://github.com/mer-a-o/howtojedi
       
 site:
   template: book-theme
-  title: JEDI Applications
+  title: JEDI hands-on examples
 
