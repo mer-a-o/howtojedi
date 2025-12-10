@@ -2,5 +2,6 @@
 .DS_Store
 logfile.000000.out
 _build
-output
 warnfile.000000.out
+output/*
+!output/.gitkeep
