@@ -9,6 +9,15 @@ parts:
   chapters:
   - file: setups/discover.ipynb
 
+
+- caption: JEDI overview
+  chapters:
+  - file: jedi_overview/jedi_overview.ipynb
+
+- caption: Adding a new observation to JEDI
+  chapters:
+  - file: jedi_obs/ioda_format_converters.ipynb
+
 - caption: JEDI applications
   chapters:
     - file: jedi_applications/run_hofx/run_hofx3D.ipynb
