@@ -27,3 +27,8 @@ parts:
 #    - file: jedi_applications/run_hofx/run_hofx_save_geovals.ipynb
 #    - file: jedi_applications/run_var/4dvar/run_4dvar_discover.ipynb
 #    - file: jedi_applications/run_3dvar/run_3dvar.ipynb
+
+- caption: JEDI utilities
+  chapters:
+    - file: jedi_utils/run_convert_to_latlon/convert_to_latlon.ipynb
+
