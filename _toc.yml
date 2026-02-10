@@ -32,3 +32,9 @@ parts:
   chapters:
     - file: jedi_utils/run_convert_to_latlon/convert_to_latlon.ipynb
 
+
+- caption: JEDI trainings
+  chapters:
+    - file: jedi_trainings/2026_02/lecture1.ipynb
+
+
