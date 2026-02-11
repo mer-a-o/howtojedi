@@ -3,5 +3,6 @@
 logfile.000000.out
 _build
 warnfile.000000.out
+log_*txt
 output/*
 !output/.gitkeep
