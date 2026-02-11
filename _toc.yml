@@ -36,5 +36,6 @@ parts:
 - caption: JEDI trainings
   chapters:
     - file: jedi_trainings/2026_02/lecture1.ipynb
+    - file: jedi_trainings/2026_02/lecture2.ipynb
 
 
