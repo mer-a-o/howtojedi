@@ -7,7 +7,7 @@ Please note that JEDI is under active development, so some YAML keys and configu
 
 To view the practical examples you can navigate to the [GitHub repository](https://github.com/mer-a-o/howtojedi) and browse the Jupyter Notebooks or use the Jupyter Book, available [here](https://mer-a-o.github.io/howtojedi).
 
-This [GitHub repository](https://github.com/mer-a-o/howtojedi) also includes low-resolution input files for each practical examples. To run the examples, clone this repository, set up your [work environment](https://mer-a-o.github.io/howtojedi/discover/) and run the examples in your terminal.
+This [GitHub repository](https://github.com/mer-a-o/howtojedi) includes low-resolution input files for each practical examples. To run the examples, clone this repository, set up your [work environment](https://mer-a-o.github.io/howtojedi/discover/) and run the examples in your terminal.
 
 
 Recommended order:
