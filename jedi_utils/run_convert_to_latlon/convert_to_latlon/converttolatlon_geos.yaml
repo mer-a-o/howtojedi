@@ -20,7 +20,6 @@ states to structured grid:
     - volume_mixing_ratio_of_no2
     - volume_mixing_ratio_of_no
     - volume_mixing_ratio_of_o3
-    - volume_mixing_ratio_of_co
     - air_pressure_at_surface
     - water_vapor_mixing_ratio_wrt_moist_air
     field io names: &field_io_names
@@ -28,7 +27,6 @@ states to structured grid:
       volume_mixing_ratio_of_no2: NO2
       volume_mixing_ratio_of_no: "NO"
       volume_mixing_ratio_of_o3: O3
-      volume_mixing_ratio_of_co: CO
       air_pressure_at_surface: PS
       water_vapor_mixing_ratio_wrt_moist_air: SPHU
 
@@ -48,5 +46,5 @@ states to structured grid:
     - 250
     all model levels: true
     bottom model level: false
-    datapath: Data
+    datapath: outputs
     prefix: converttogauss
