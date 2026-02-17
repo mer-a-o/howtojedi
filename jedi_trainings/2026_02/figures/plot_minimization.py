@@ -235,7 +235,7 @@ def main():
     Main function to parse log file and create visualizations.
     """
     # Path to your log file
-    log_file = '/Users/maryamabdi/Work/JEDI/howtojedi/jedi_trainings/2026_02/figures/example_log_3denvar.txt'
+    log_file = '/discover/nobackup/mabdiosk/JEDI_practicals/live_demo/var/outputs/log_3denvar.txt'
     
     # Parse the log file
     print(f"Parsing log file: {log_file}")
@@ -245,7 +245,8 @@ def main():
     print_summary(data)
     
     # Create plots
-    plot_cost_function_convergence(data, output_file='cost_function_convergence.png')
+    #plot_cost_function_convergence(data, output_file='./cost_function_convergence_3dvar_IB.png')
+    plot_cost_function_convergence(data, output_file='./cost_function_convergence_3denvar.png')
 
 
 if __name__ == '__main__':
