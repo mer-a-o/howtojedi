@@ -125,25 +125,21 @@ def plot_cost_function_convergence(data, output_file=None):
     ax2 = axes[0, 1]
     ax2.plot(iteration, Jb, 'o-', linewidth=2, markersize=4, 
              color='tab:blue', label='Jb (background term)')
-    ax2.plot(iteration, Jo, 's-', linewidth=2, markersize=4, 
-             color='tab:orange', label='Jo (observation term)')
     ax2.set_xlabel('Iteration', fontsize=12)
-    ax2.set_ylabel('Cost Function Components', fontsize=12)
-    ax2.set_title('Background vs Observation Terms', fontsize=13, fontweight='bold')
+    ax2.set_ylabel('Cost Function Component', fontsize=12)
+    ax2.set_title('Background Term', fontsize=13, fontweight='bold')
     ax2.grid(True, alpha=0.3)
     ax2.legend(fontsize=11)
     
     # Plot 3: Jb/Jo ratio (balance between terms)
     ax3 = axes[1, 0]
-    # Avoid division by zero
-    ratio = np.divide(Jb, Jo, where=Jo!=0, out=np.full_like(Jb, np.nan))
-    ax3.plot(iteration, ratio, 'o-', linewidth=2, markersize=4, color='tab:green')
+    ax3.plot(iteration, Jo, 's-', linewidth=2, markersize=4, 
+             color='tab:orange', label='Jo (observation term)')
     ax3.set_xlabel('Iteration', fontsize=12)
-    ax3.set_ylabel('Jb / Jo Ratio', fontsize=12)
-    ax3.set_title('Balance Between Background and Observations', fontsize=13, fontweight='bold')
+    ax3.set_ylabel('Cost Function Component', fontsize=12)
+    ax3.set_title('Observation Term', fontsize=13, fontweight='bold')
     ax3.grid(True, alpha=0.3)
-    ax3.axhline(y=0.1, color='gray', linestyle='--', alpha=0.5, label='Jb/Jo = 0.1')
-    ax3.legend(fontsize=10)
+    ax3.legend(fontsize=11)
     
     # Plot 4: Gradient norm reduction (log scale)
     ax4 = axes[1, 1]
