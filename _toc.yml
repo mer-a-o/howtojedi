@@ -15,7 +15,10 @@ parts:
   - file: jedi_applications/run_hofx/run_hofx3D.ipynb
   - file: jedi_applications/run_hofx/run_hofx4D.ipynb
   - file: jedi_applications/run_hofx/run_hofx3D_with_filters.ipynb
-  - file: jedi_applications/run_hofx/homework_hofx_aircraft.ipynb
+##  - file: jedi_applications/run_hofx/run_hofx_save_geovals.ipynb
+##  - file: jedi_applications/run_var/4dvar/run_4dvar_discover.ipynb
+##  - file: jedi_applications/run_3dvar/run_3dvar.ipynb
+ - file: jedi_applications/run_hofx/homework_hofx_aircraft.ipynb
 
 - caption: JEDI utilities
   chapters:
@@ -27,35 +30,3 @@ parts:
   - file: jedi_trainings/2026_02/lecture1.ipynb
   - file: jedi_trainings/2026_02/lecture2.ipynb
   - file: jedi_trainings/2026_02/lecture3.ipynb
-
-
-#- caption: Running JEDI on supported HPCs
-#  chapters:
-#  - file: setups/discover.ipynb
-#
-#- caption: Adding a new observation to JEDI
-#  chapters:
-#  - file: jedi_obs/ioda_format_converters.ipynb
-#
-#- caption: JEDI applications
-#  chapters:
-#  - file: jedi_applications/run_hofx/run_hofx3D.ipynb
-#  - file: jedi_applications/run_hofx/run_hofx4D.ipynb
-#  - file: jedi_applications/run_hofx/run_hofx3D_with_filters.ipynb
-#  - file: jedi_applications/run_hofx/homework_hofx_aircraft.ipynb
-##  - file: jedi_applications/run_hofx/run_hofx_save_geovals.ipynb
-##  - file: jedi_applications/run_var/4dvar/run_4dvar_discover.ipynb
-##  - file: jedi_applications/run_3dvar/run_3dvar.ipynb
-#
-#- caption: JEDI utilities
-#  chapters:
-#  - file: jedi_utils/run_convert_to_latlon/convert_to_latlon.ipynb
-#
-#- caption: JEDI trainings (2026-02)
-#  chapters:
-#  - file: jedi_trainings/2026_02/lecture0.ipynb
-#  - file: jedi_trainings/2026_02/lecture1.ipynb
-#  - file: jedi_trainings/2026_02/lecture2.ipynb
-#  - file: jedi_trainings/2026_02/lecture3.ipynb
-#
-#

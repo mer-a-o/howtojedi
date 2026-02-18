@@ -1,18 +1,12 @@
 
-#  Overview of the JEDI Practical Tutorials
+#  Overview of the JEDI Practical Tutorials and Training
 
-This tutorial series is designed to help you run the Joint Effort for Data assimilation Integration (JEDI) system through small, hands-on examples.
+This tutorial is broken down into two chapters. The first chapter, `JEDI hands-on examples`, is designed to help you run the Joint Effort for Data Assimilation Integration (JEDI) system through small, practical exercises. The second chapter, `JEDI trainings` includes JEDI training materials written to support lectures and does not include hands-on examples for users to run.
+
+The hands-on examples are organized under JEDI hands-on examples [here](https://mer-a-o.github.io/howtojedi/). These examples include low-resolution input files that you can use to test and run JEDI. The input files are available in the [GitHub repository](https://github.com/mer-a-o/howtojedi). More details about these files and instructions on how to run JEDI executables are available in each example.
+
+In the `JEDI trainings` lectures, some examples at `C90` resolution are discussed. These files are not included in the GitHub repository to keep the repository size manageable. They are available on DISCOVER (and will be made publicly available later). Details about the file locations are provided in each lecture.
+
 
 Please note that JEDI is under active development, so some YAML keys and configurations may change over time. If you encounter differences, refer to the ctest examples in the official JEDI code repositories for the most up-to-date reference. Each tutorial includes links to the relevant ctest examples to help you explore further.
 
-To view the practical examples you can navigate to the [GitHub repository](https://github.com/mer-a-o/howtojedi) and browse the Jupyter Notebooks or use the Jupyter Book, available [here](https://mer-a-o.github.io/howtojedi).
-
-This [GitHub repository](https://github.com/mer-a-o/howtojedi) includes low-resolution input files for each practical examples. To run the examples, clone this repository, set up your [work environment](https://mer-a-o.github.io/howtojedi/discover/) and run the examples in your terminal.
-
-
-Recommended order:
-1. Setup your work environment following the [instructions](https://mer-a-o.github.io/howtojedi/discover/)
-2. [Hofx3D practical example](https://mer-a-o.github.io/howtojedi/run-hofx3d/)
-3. [Hofx4D practical example](https://mer-a-o.github.io/howtojedi/run-hofx4d/) 
-4. [Applying a simple filter](https://mer-a-o.github.io/howtojedi/run-hofx3d-with-filters/)
-5. [Homework 1, Hofx for aircraft measurements](https://mer-a-o.github.io/howtojedi/homework-hofx-aircraft/)
