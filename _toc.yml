@@ -26,7 +26,7 @@ parts:
 
 - caption: JEDI trainings (2026-02)
   chapters:
-  - file: jedi_trainings/2026_02/Intro.pdf
+  - file: jedi_trainings/2026_02/Intro
   - file: jedi_trainings/2026_02/lecture0.ipynb
   - file: jedi_trainings/2026_02/lecture1.ipynb
   - file: jedi_trainings/2026_02/lecture2.ipynb
