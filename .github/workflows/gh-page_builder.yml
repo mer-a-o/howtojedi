@@ -11,6 +11,8 @@ env:
   # E.g., if your site lives at `https://mydomain.org/myproject`, set `BASE_URL=/myproject`.
   # If, instead, your site lives at the root of the domain, at `https://mydomain.org`, set `BASE_URL=''`.
   BASE_URL: /${{ github.event.repository.name }}
+  # GoatCounter site code: the "XXX" in https://XXX.goatcounter.com. Leave empty to disable analytics.
+  GOATCOUNTER_CODE: 'howtojedi'
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -39,6 +41,14 @@ jobs:
         run: npm install -g jupyter-book
       - name: Build HTML Assets
         run: jupyter-book build --html
+      # MyST has no built-in GoatCounter option, so inject the script into every page's <head>.
+      # The site navigates client-side, so we also count each history.pushState page change.
+      - name: Add GoatCounter analytics
+        if: env.GOATCOUNTER_CODE != ''
+        run: |
+          SNIPPET='<script data-goatcounter="https://'"$GOATCOUNTER_CODE"'.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><script>(function(){var p=history.pushState;history.pushState=function(){p.apply(this,arguments);if(window.goatcounter&&window.goatcounter.count){window.goatcounter.count({path:location.pathname+location.search})}}})();</script>'
+          find _build/html -name '*.html' -exec perl -0pi -e "s#</head>#${SNIPPET}</head>#" {} +
+          grep -l "goatcounter" -r _build/html --include='*.html' | wc -l
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
